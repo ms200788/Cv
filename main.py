@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.responses import HTMLResponse, FileResponse
-import os
+import os, re
 
 app = FastAPI()
 
@@ -10,17 +10,24 @@ HTML_DIR = os.path.join(BASE_DIR, "html")
 # ---------- HOME ----------
 @app.get("/", response_class=HTMLResponse)
 async def home():
-    return FileResponse(os.path.join(HTML_DIR, "page1.html"))
+    return FileResponse(
+        os.path.join(HTML_DIR, "index.html"),
+        media_type="text/html"
+    )
 
-# ---------- PAGE 2 ----------
-@app.get("/page2", response_class=HTMLResponse)
-async def page2():
-    return FileResponse(os.path.join(HTML_DIR, "page2.html"))
+# ---------- DYNAMIC PAGES ----------
+@app.get("/{page}", response_class=HTMLResponse)
+async def serve_page(page: str):
+    # allow only safe slugs like articles, ai-guide, telegram_bot
+    if not re.match(r"^[a-zA-Z0-9_-]+$", page):
+        return HTMLResponse("Not found", status_code=404)
 
-# ---------- PAGE 3 ----------
-@app.get("/page3", response_class=HTMLResponse)
-async def page3():
-    return FileResponse(os.path.join(HTML_DIR, "page3.html"))
+    path = os.path.join(HTML_DIR, f"{page}.html")
+
+    if not os.path.isfile(path):
+        return HTMLResponse("Page not found", status_code=404)
+
+    return FileResponse(path, media_type="text/html")
 
 # ---------- HEALTH ----------
 @app.get("/health")
