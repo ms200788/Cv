@@ -1,34 +1,219 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Page 2</title>
+<title>CVAnime</title>
 
 <style>
 body {
-    background:#121212;
-    color:#fff;
-    font-family:system-ui;
-    text-align:center;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.8;
+    margin: 0;
+    background-color: #0f2027;
+    color: #eaeaea;
+    position: relative;
+    z-index: 1;
 }
-.btn {
-    background:#4caf50;
-    color:#fff;
-    padding:14px 22px;
-    border-radius:30px;
-    text-decoration:none;
-    display:inline-block;
-    margin-top:20px;
+
+/* ================= TOP BAR ================= */
+.topbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    background-image: url("https://i.ibb.co/4nxVTXW5/IMG-20251222-205203.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: rgba(0,0,0,0.45);
+
+    color: #ffffff;
+    padding: 14px 16px;
+    font-size: 20px;
+    font-weight: 700;
+    backdrop-filter: blur(2px);
+}
+
+/* ================= NOTICE BAR ================= */
+.satire {
+    background: #000;
+    color: #fff;
+    text-align: center;
+    padding: 8px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* ================= MAIN CARD ================= */
+.card {
+    max-width: 860px;
+    margin: 16px auto;
+    background: #ffffff;
+    color: #000000;
+    border-radius: 16px;
+    padding: 20px;
+}
+
+.card h1,
+.card h2,
+.card p {
+    color: #000;
+}
+
+/* ================= TEXT ================= */
+h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.meta {
+    color: #666;
+    font-size: 13px;
+    margin-bottom: 16px;
+}
+
+p {
+    line-height: 1.8;
+    margin: 14px 0;
+    font-size: 15px;
+}
+
+/* ================= DISCLAIMER ================= */
+.disclaimer {
+    background: #111;
+    color: #fff;
+    padding: 16px;
+    font-size: 13px;
+    border-radius: 14px;
+    margin-top: 30px;
+}
+
+/* ================= LIST ================= */
+ul {
+    padding-left: 18px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+    gap: 12px;
+}
+
+ul li {
+    list-style: none;
+    text-align: center;
+}
+
+ul li a {
+    display: block;
+    padding: 10px;
+    background: #f0f3ff;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    color: #4a63ff;
+    transition: 0.3s;
+}
+
+ul li a:hover {
+    background: #4a63ff;
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+/* ================= CONCLUSION ================= */
+.conclusion {
+    background: #f0f3ff;
+    padding: 20px;
+    border-left: 5px solid #4a63ff;
+    border-radius: 12px;
+}
+
+/* ================= BACKGROUND PARTICLES ================= */
+.bg {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.bg span {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: rgba(120, 200, 255, 0.18);
+    border-radius: 50%;
+    animation: float 16s linear infinite;
+}
+
+@keyframes float {
+    from { transform: translateY(100vh); }
+    to { transform: translateY(-10vh); }
+}
+
+/* ================= MOBILE OPTIMIZATION ================= */
+@media (max-width: 600px) {
+    .bg { display: none; }
 }
 </style>
 </head>
 
 <body>
 
-<h1>This is Page 2</h1>
-<p>More content here.</p>
+<!-- BACKGROUND -->
+<div class="bg">
+    <span style="left:5%; animation-delay:0s;"></span>
+    <span style="left:12%; animation-delay:3s;"></span>
+    <span style="left:20%; animation-delay:6s;"></span>
+    <span style="left:30%; animation-delay:1s;"></span>
+    <span style="left:40%; animation-delay:4s;"></span>
+    <span style="left:50%; animation-delay:7s;"></span>
+    <span style="left:60%; animation-delay:2s;"></span>
+    <span style="left:70%; animation-delay:5s;"></span>
+    <span style="left:80%; animation-delay:8s;"></span>
+    <span style="left:90%; animation-delay:6s;"></span>
+</div>
 
-<a class="btn" href="/page3">Continue</a>
+<!-- TOP BAR -->
+<div class="topbar">𝘾𝙑𝘼𝙣𝙞𝙢𝙚</div>
+<div class="satire">⚠️ ᴍᴜsᴛ ʜᴀᴠᴇ ᴛᴇʟᴇɢʀᴀᴍ</div>
+
+<!-- CONTENT -->
+<div class="card">
+    <h1>𝘞𝘦𝘭𝘤𝘰𝘮𝘦 𝘛𝘰 <b>𝘾𝙑𝘼𝙣𝙞𝙢𝙚</b></h1>
+    <h2>Click on Alphabet to Choose Anime.</h2>
+
+    <div class="disclaimer">
+        𝗔𝗹𝗹 𝗔𝗻𝗶𝗺𝗲 𝗛𝗲𝗿𝗲 𝗮𝗿𝗲 𝗶𝗻 𝗛𝗶𝗻𝗱𝗶 𝗟𝗮𝗻𝗴𝘂𝗮𝗴𝗲 𝗼𝗻𝗹𝘆.
+    </div>
+
+    <ul>
+        <li><a href="/a">A</a></li>
+        <li><a href="/b">B</a></li>
+        <li><a href="/c">C</a></li>
+        <li><a href="/d">D</a></li>
+        <li><a href="/e">E</a></li>
+        <li><a href="/f">F</a></li>
+        <li><a href="/g">G</a></li>
+        <li><a href="/h">H</a></li>
+        <li><a href="/i">I</a></li>
+        <li><a href="/j">J</a></li>
+        <li><a href="/k">K</a></li>
+        <li><a href="/l">L</a></li>
+        <li><a href="/m">M</a></li>
+        <li><a href="/n">N</a></li>
+        <li><a href="/o">O</a></li>
+        <li><a href="/p">P</a></li>
+        <li><a href="/q">Q</a></li>
+        <li><a href="/r">R</a></li>
+        <li><a href="/s">S</a></li>
+        <li><a href="/t">T</a></li>
+        <li><a href="/u">U</a></li>
+        <li><a href="/v">V</a></li>
+        <li><a href="/w">W</a></li>
+        <li><a href="/x">X</a></li>
+        <li><a href="/y">Y</a></li>
+        <li><a href="/z">Z</a></li>
+    </ul>
+</div>
 
 </body>
 </html>
