@@ -106,11 +106,38 @@ p {
     border-left:5px solid #4a63ff;
     border-radius:12px;
 }
+<style>
+.bg {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.bg span {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    animation: float 10s linear infinite;
+}
+
+@keyframes float {
+    from { transform: translateY(100vh); }
+    to { transform: translateY(-10vh); }
+}
 </style>
+
+
 </head>
 
 <body>
-
+<div class="bg">
+    <span style="left:10%; animation-delay:0s;"></span>
+    <span style="left:40%; animation-delay:2s;"></span>
+    <span style="left:70%; animation-delay:4s;"></span>
+</div>
 <div class="topbar"><b>𝙲𝚅𝙰𝚗𝚒𝚖𝚎</b></div>
 <div class="satire">⚠️ ᴍᴜsᴛ ʜᴀᴠᴇ ᴛᴇʟᴇɢʀᴍ</div>
 
