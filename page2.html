@@ -2,163 +2,175 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CVAnime</title>
 
 <style>
+/* ===== BASE ===== */
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background: #0b1d26;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #0f2027;
+    color: #eaeaea;
+}
+
+/* ===== TOP BAR ===== */
+.topbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-image: url("https://i.ibb.co/4nxVTXW5/IMG-20251222-205203.jpg");
+    background-size: cover;
+    background-position: center;
     color: #fff;
+    padding: 14px 16px;
+    font-size: 20px;
+    font-weight: 700;
+    backdrop-filter: blur(3px);
 }
 
-/* ================= BACKGROUND ANIMATION ================= */
-.bg {
-    position: fixed;
-    inset: 0;
-    overflow: hidden;
-    z-index: -1;
+/* ===== NOTICE ===== */
+.satire {
+    background: #000;
+    color: #fff;
+    text-align: center;
+    padding: 8px;
+    font-size: 13px;
+    font-weight: 600;
 }
 
-.bg span {
-    position: absolute;
-    top: 100%;
-    width: var(--size);
-    height: var(--size);
-    background: rgba(120, 220, 255, 0.6);
-    border-radius: 50%;
-    animation: rise var(--time) linear infinite;
-    box-shadow: 0 0 20px rgba(120, 220, 255, 0.8);
-}
-
-@keyframes rise {
-    from {
-        transform: translateY(0) translateX(0);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(-120vh) translateX(40px);
-        opacity: 1;
-    }
-}
-
-/* ================= CARD ================= */
+/* ===== CARD ===== */
 .card {
-    max-width: 520px; /* patla */
-    margin: 40px auto;
-    background: #121212;
+    max-width: 680px; /* patla */
+    margin: 24px auto;
+    background: #ffffff;
     color: #000;
-    border-radius: 14px;
-    padding: 20px;
+    border-radius: 18px;
+    padding: 22px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
-/* ================= HEADINGS ================= */
 h1 {
     font-size: 26px;
     margin-bottom: 8px;
 }
 
 h2 {
-    font-size: 16px;
-    margin-bottom: 16px;
-    color: #333;
+    font-size: 18px;
+    margin-bottom: 14px;
 }
 
-/* ================= ALPHABET GRID ================= */
+.disclaimer {
+    background: #111;
+    color: #fff;
+    padding: 14px;
+    font-size: 13px;
+    border-radius: 12px;
+    margin: 16px 0;
+}
+
+/* ===== ALPHABET GRID ===== */
 .alpha {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 12px;
+    margin-top: 20px;
 }
 
-.alpha a {
+.alpha div {
+    background: #f0f3ff;
     text-align: center;
-    padding: 14px 0;
-    background: #eef2ff;
+    padding: 14px;
+    font-size: 18px;
+    font-weight: 700;
     border-radius: 10px;
-    font-weight: bold;
-    text-decoration: none;
-    color: #3b5cff;
-    transition: 0.3s;
 }
 
-.alpha a:hover {
-    background: #3b5cff;
-    color: #fff;
-    transform: translateY(-3px);
-}
-
-/* ================= BIG Y & Z ================= */
-.alpha a.big {
+/* BIG Y Z */
+.alpha .big {
     grid-column: span 2;
-    font-size: 22px;
-    padding: 22px 0;
+    font-size: 28px;
+    padding: 20px;
+    background: #4da3ff;
+    color: #fff;
 }
 
-/* ================= MOBILE ================= */
-@media (max-width: 600px) {
-    .bg { display: none; }
+/* ===== ANIMATED BACKGROUND ===== */
+.bg {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    bottom: -20px;
+    border-radius: 50%;
+    background: rgba(120,220,255,0.6);
+    box-shadow: 0 0 18px rgba(120,220,255,0.8);
+    animation: floatUp linear infinite;
+}
+
+@keyframes floatUp {
+    from {
+        transform: translateY(0);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(-120vh);
+        opacity: 1;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<!-- BACKGROUND -->
-<div class="bg">
-    <span style="left:5%;  --size:8px;  --time:12s;"></span>
-    <span style="left:12%; --size:14px; --time:18s;"></span>
-    <span style="left:20%; --size:10px; --time:15s;"></span>
-    <span style="left:30%; --size:18px; --time:22s;"></span>
-    <span style="left:40%; --size:12px; --time:14s;"></span>
-    <span style="left:50%; --size:20px; --time:25s;"></span>
-    <span style="left:60%; --size:9px;  --time:13s;"></span>
-    <span style="left:70%; --size:16px; --time:20s;"></span>
-    <span style="left:80%; --size:11px; --time:17s;"></span>
-    <span style="left:90%; --size:15px; --time:19s;"></span>
-</div>
+<!-- ===== ANIMATED BG ===== -->
+<div class="bg" id="bg"></div>
 
-<!-- CONTENT -->
+<!-- ===== HEADER ===== -->
+<div class="topbar">𝘾𝙑𝘼𝙣𝙞𝙢𝙚</div>
+<div class="satire">⚠️ ᴍᴜsᴛ ʜᴀᴠᴇ ᴛᴇʟᴇɢʀᴀᴍ</div>
+
+<!-- ===== CONTENT ===== -->
 <div class="card">
-    <h1>𝘾𝙑𝘼𝙣𝙞𝙢𝙚</h1>
+    <h1>Welcome to <b>CVAnime</b></h1>
     <h2>Click on Alphabet to Choose Anime</h2>
 
+    <div class="disclaimer">
+        All Anime here are available in Hindi language only.
+    </div>
+
     <div class="alpha">
-        <a href="/a">A</a>
-        <a href="/b">B</a>
-        <a href="/c">C</a>
-        <a href="/d">D</a>
-
-        <a href="/e">E</a>
-        <a href="/f">F</a>
-        <a href="/g">G</a>
-        <a href="/h">H</a>
-
-        <a href="/i">I</a>
-        <a href="/j">J</a>
-        <a href="/k">K</a>
-        <a href="/l">L</a>
-
-        <a href="/m">M</a>
-        <a href="/n">N</a>
-        <a href="/o">O</a>
-        <a href="/p">P</a>
-
-        <a href="/q">Q</a>
-        <a href="/r">R</a>
-        <a href="/s">S</a>
-        <a href="/t">T</a>
-
-        <a href="/u">U</a>
-        <a href="/v">V</a>
-        <a href="/w">W</a>
-        <a href="/x">X</a>
-
-        <a href="/y" class="big">Y</a>
-        <a href="/z" class="big">Z</a>
+        <div>A</div><div>B</div><div>C</div><div>D</div>
+        <div>E</div><div>F</div><div>G</div><div>H</div>
+        <div>I</div><div>J</div><div>K</div><div>L</div>
+        <div>M</div><div>N</div><div>O</div><div>P</div>
+        <div>Q</div><div>R</div><div>S</div><div>T</div>
+        <div>U</div><div>V</div><div>W</div><div>X</div>
+        <div class="big">Y</div>
+        <div class="big">Z</div>
     </div>
 </div>
+
+<!-- ===== BG SCRIPT (GUARANTEED ANIMATION) ===== -->
+<script>
+const bg = document.getElementById("bg");
+
+for (let i = 0; i < 40; i++) {
+    const p = document.createElement("div");
+    p.className = "particle";
+    const size = 6 + Math.random() * 14;
+    p.style.width = size + "px";
+    p.style.height = size + "px";
+    p.style.left = Math.random() * 100 + "vw";
+    p.style.animationDuration = (8 + Math.random() * 14) + "s";
+    p.style.animationDelay = Math.random() * 6 + "s";
+    bg.appendChild(p);
+}
+</script>
 
 </body>
 </html>
