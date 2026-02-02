@@ -7,149 +7,96 @@
 
 <style>
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    line-height: 1.8;
     margin: 0;
-    background-color: #0f2027;
-    color: #eaeaea;
-    position: relative;
-    z-index: 1;
-}
-
-/* ================= TOP BAR ================= */
-.topbar {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-
-    background-image: url("https://i.ibb.co/4nxVTXW5/IMG-20251222-205203.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-color: rgba(0,0,0,0.45);
-
-    color: #ffffff;
-    padding: 14px 16px;
-    font-size: 20px;
-    font-weight: 700;
-    backdrop-filter: blur(2px);
-}
-
-/* ================= NOTICE BAR ================= */
-.satire {
-    background: #000;
+    font-family: Arial, sans-serif;
+    background: #0b1d26;
     color: #fff;
-    text-align: center;
-    padding: 8px;
-    font-size: 13px;
-    font-weight: 600;
 }
 
-/* ================= MAIN CARD ================= */
-.card {
-    max-width: 860px;
-    margin: 16px auto;
-    background: #ffffff;
-    color: #000000;
-    border-radius: 16px;
-    padding: 20px;
-}
-
-.card h1,
-.card h2,
-.card p {
-    color: #000;
-}
-
-/* ================= TEXT ================= */
-h1 {
-    font-size: 28px;
-    margin-bottom: 10px;
-}
-
-.meta {
-    color: #666;
-    font-size: 13px;
-    margin-bottom: 16px;
-}
-
-p {
-    line-height: 1.8;
-    margin: 14px 0;
-    font-size: 15px;
-}
-
-/* ================= DISCLAIMER ================= */
-.disclaimer {
-    background: #111;
-    color: #fff;
-    padding: 16px;
-    font-size: 13px;
-    border-radius: 14px;
-    margin-top: 30px;
-}
-
-/* ================= LIST ================= */
-ul {
-    padding-left: 18px;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
-    gap: 12px;
-}
-
-ul li {
-    list-style: none;
-    text-align: center;
-}
-
-ul li a {
-    display: block;
-    padding: 10px;
-    background: #f0f3ff;
-    border-radius: 10px;
-    text-decoration: none;
-    font-weight: bold;
-    color: #4a63ff;
-    transition: 0.3s;
-}
-
-ul li a:hover {
-    background: #4a63ff;
-    color: #fff;
-    transform: translateY(-3px);
-}
-
-/* ================= CONCLUSION ================= */
-.conclusion {
-    background: #f0f3ff;
-    padding: 20px;
-    border-left: 5px solid #4a63ff;
-    border-radius: 12px;
-}
-
-/* ================= BACKGROUND PARTICLES ================= */
+/* ================= BACKGROUND ANIMATION ================= */
 .bg {
     position: fixed;
     inset: 0;
     overflow: hidden;
-    z-index: 0;
+    z-index: -1;
 }
 
 .bg span {
     position: absolute;
-    width: 12px;
-    height: 12px;
-    background: rgba(120, 200, 255, 0.18);
+    bottom: -20px;
+    width: 14px;
+    height: 14px;
+    background: rgba(100, 220, 255, 0.35);
     border-radius: 50%;
-    animation: float 16s linear infinite;
+    animation: floatUp linear infinite;
+    box-shadow: 0 0 12px rgba(100, 220, 255, 0.6);
 }
 
-@keyframes float {
-    from { transform: translateY(100vh); }
-    to { transform: translateY(-10vh); }
+@keyframes floatUp {
+    from {
+        transform: translateY(0) scale(0.6);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(-120vh) scale(1.2);
+        opacity: 1;
+    }
 }
 
-/* ================= MOBILE OPTIMIZATION ================= */
+/* ================= CARD ================= */
+.card {
+    max-width: 520px; /* patla */
+    margin: 40px auto;
+    background: #ffffff;
+    color: #000;
+    border-radius: 14px;
+    padding: 20px;
+}
+
+/* ================= HEADINGS ================= */
+h1 {
+    font-size: 26px;
+    margin-bottom: 8px;
+}
+
+h2 {
+    font-size: 16px;
+    margin-bottom: 16px;
+    color: #333;
+}
+
+/* ================= ALPHABET GRID ================= */
+.alpha {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.alpha a {
+    text-align: center;
+    padding: 14px 0;
+    background: #eef2ff;
+    border-radius: 10px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #3b5cff;
+    transition: 0.3s;
+}
+
+.alpha a:hover {
+    background: #3b5cff;
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+/* ================= BIG Y & Z ================= */
+.alpha a.big {
+    grid-column: span 2;
+    font-size: 22px;
+    padding: 22px 0;
+}
+
+/* ================= MOBILE ================= */
 @media (max-width: 600px) {
     .bg { display: none; }
 }
@@ -160,59 +107,59 @@ ul li a:hover {
 
 <!-- BACKGROUND -->
 <div class="bg">
-    <span style="left:5%; animation-delay:0s;"></span>
-    <span style="left:12%; animation-delay:3s;"></span>
-    <span style="left:20%; animation-delay:6s;"></span>
-    <span style="left:30%; animation-delay:1s;"></span>
-    <span style="left:40%; animation-delay:4s;"></span>
-    <span style="left:50%; animation-delay:7s;"></span>
-    <span style="left:60%; animation-delay:2s;"></span>
-    <span style="left:70%; animation-delay:5s;"></span>
-    <span style="left:80%; animation-delay:8s;"></span>
-    <span style="left:90%; animation-delay:6s;"></span>
+    <span style="left:5%; animation-duration:12s;"></span>
+    <span style="left:10%; animation-duration:18s;"></span>
+    <span style="left:18%; animation-duration:15s;"></span>
+    <span style="left:26%; animation-duration:20s;"></span>
+    <span style="left:34%; animation-duration:14s;"></span>
+    <span style="left:42%; animation-duration:22s;"></span>
+    <span style="left:50%; animation-duration:16s;"></span>
+    <span style="left:58%; animation-duration:19s;"></span>
+    <span style="left:66%; animation-duration:13s;"></span>
+    <span style="left:74%; animation-duration:21s;"></span>
+    <span style="left:82%; animation-duration:17s;"></span>
+    <span style="left:90%; animation-duration:24s;"></span>
 </div>
-
-<!-- TOP BAR -->
-<div class="topbar">𝘾𝙑𝘼𝙣𝙞𝙢𝙚</div>
-<div class="satire">⚠️ ᴍᴜsᴛ ʜᴀᴠᴇ ᴛᴇʟᴇɢʀᴀᴍ</div>
 
 <!-- CONTENT -->
 <div class="card">
-    <h1>𝘞𝘦𝘭𝘤𝘰𝘮𝘦 𝘛𝘰 <b>𝘾𝙑𝘼𝙣𝙞𝙢𝙚</b></h1>
-    <h2>Click on Alphabet to Choose Anime.</h2>
+    <h1>𝘾𝙑𝘼𝙣𝙞𝙢𝙚</h1>
+    <h2>Click on Alphabet to Choose Anime</h2>
 
-    <div class="disclaimer">
-        𝗔𝗹𝗹 𝗔𝗻𝗶𝗺𝗲 𝗛𝗲𝗿𝗲 𝗮𝗿𝗲 𝗶𝗻 𝗛𝗶𝗻𝗱𝗶 𝗟𝗮𝗻𝗴𝘂𝗮𝗴𝗲 𝗼𝗻𝗹𝘆.
+    <div class="alpha">
+        <a href="/a">A</a>
+        <a href="/b">B</a>
+        <a href="/c">C</a>
+        <a href="/d">D</a>
+
+        <a href="/e">E</a>
+        <a href="/f">F</a>
+        <a href="/g">G</a>
+        <a href="/h">H</a>
+
+        <a href="/i">I</a>
+        <a href="/j">J</a>
+        <a href="/k">K</a>
+        <a href="/l">L</a>
+
+        <a href="/m">M</a>
+        <a href="/n">N</a>
+        <a href="/o">O</a>
+        <a href="/p">P</a>
+
+        <a href="/q">Q</a>
+        <a href="/r">R</a>
+        <a href="/s">S</a>
+        <a href="/t">T</a>
+
+        <a href="/u">U</a>
+        <a href="/v">V</a>
+        <a href="/w">W</a>
+        <a href="/x">X</a>
+
+        <a href="/y" class="big">Y</a>
+        <a href="/z" class="big">Z</a>
     </div>
-
-    <ul>
-        <li><a href="/a">A</a></li>
-        <li><a href="/b">B</a></li>
-        <li><a href="/c">C</a></li>
-        <li><a href="/d">D</a></li>
-        <li><a href="/e">E</a></li>
-        <li><a href="/f">F</a></li>
-        <li><a href="/g">G</a></li>
-        <li><a href="/h">H</a></li>
-        <li><a href="/i">I</a></li>
-        <li><a href="/j">J</a></li>
-        <li><a href="/k">K</a></li>
-        <li><a href="/l">L</a></li>
-        <li><a href="/m">M</a></li>
-        <li><a href="/n">N</a></li>
-        <li><a href="/o">O</a></li>
-        <li><a href="/p">P</a></li>
-        <li><a href="/q">Q</a></li>
-        <li><a href="/r">R</a></li>
-        <li><a href="/s">S</a></li>
-        <li><a href="/t">T</a></li>
-        <li><a href="/u">U</a></li>
-        <li><a href="/v">V</a></li>
-        <li><a href="/w">W</a></li>
-        <li><a href="/x">X</a></li>
-        <li><a href="/y">Y</a></li>
-        <li><a href="/z">Z</a></li>
-    </ul>
 </div>
 
 </body>
