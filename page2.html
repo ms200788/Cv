@@ -23,22 +23,22 @@ body {
 
 .bg span {
     position: absolute;
-    bottom: -20px;
-    width: 14px;
-    height: 14px;
-    background: rgba(100, 220, 255, 0.35);
+    top: 100%;
+    width: var(--size);
+    height: var(--size);
+    background: rgba(120, 220, 255, 0.6);
     border-radius: 50%;
-    animation: floatUp linear infinite;
-    box-shadow: 0 0 12px rgba(100, 220, 255, 0.6);
+    animation: rise var(--time) linear infinite;
+    box-shadow: 0 0 20px rgba(120, 220, 255, 0.8);
 }
 
-@keyframes floatUp {
+@keyframes rise {
     from {
-        transform: translateY(0) scale(0.6);
+        transform: translateY(0) translateX(0);
         opacity: 0;
     }
     to {
-        transform: translateY(-120vh) scale(1.2);
+        transform: translateY(-120vh) translateX(40px);
         opacity: 1;
     }
 }
@@ -107,18 +107,16 @@ h2 {
 
 <!-- BACKGROUND -->
 <div class="bg">
-    <span style="left:5%; animation-duration:12s;"></span>
-    <span style="left:10%; animation-duration:18s;"></span>
-    <span style="left:18%; animation-duration:15s;"></span>
-    <span style="left:26%; animation-duration:20s;"></span>
-    <span style="left:34%; animation-duration:14s;"></span>
-    <span style="left:42%; animation-duration:22s;"></span>
-    <span style="left:50%; animation-duration:16s;"></span>
-    <span style="left:58%; animation-duration:19s;"></span>
-    <span style="left:66%; animation-duration:13s;"></span>
-    <span style="left:74%; animation-duration:21s;"></span>
-    <span style="left:82%; animation-duration:17s;"></span>
-    <span style="left:90%; animation-duration:24s;"></span>
+    <span style="left:5%;  --size:8px;  --time:12s;"></span>
+    <span style="left:12%; --size:14px; --time:18s;"></span>
+    <span style="left:20%; --size:10px; --time:15s;"></span>
+    <span style="left:30%; --size:18px; --time:22s;"></span>
+    <span style="left:40%; --size:12px; --time:14s;"></span>
+    <span style="left:50%; --size:20px; --time:25s;"></span>
+    <span style="left:60%; --size:9px;  --time:13s;"></span>
+    <span style="left:70%; --size:16px; --time:20s;"></span>
+    <span style="left:80%; --size:11px; --time:17s;"></span>
+    <span style="left:90%; --size:15px; --time:19s;"></span>
 </div>
 
 <!-- CONTENT -->
