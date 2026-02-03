@@ -81,6 +81,7 @@ body {
     font-size: 14px;
     cursor: pointer;
     transition: 0.25s ease;
+    user-select: none;
 }
 
 .season-btn.active {
@@ -102,7 +103,7 @@ body {
         <div class="anime-content">
             <div class="anime-title">Lord of Mysteries</div>
             <div class="seasons">
-                <div class="season-btn" onclick="toggle(this)">Season 1</div>
+                <div class="season-btn" data-url="https://example.com/lom-s1">Season 1</div>
             </div>
         </div>
     </div>
@@ -112,9 +113,9 @@ body {
         <div class="anime-content">
             <div class="anime-title">Log Horizon</div>
             <div class="seasons">
-                <div class="season-btn" onclick="toggle(this)">Season 1</div>
-                <div class="season-btn" onclick="toggle(this)">Season 2</div>
-                <div class="season-btn" onclick="toggle(this)">Season 3</div>
+                <div class="season-btn" data-url="https://example.com/log-s1">Season 1</div>
+                <div class="season-btn" data-url="https://example.com/log-s2">Season 2</div>
+                <div class="season-btn" data-url="https://example.com/log-s3">Season 3</div>
             </div>
         </div>
     </div>
@@ -124,7 +125,7 @@ body {
         <div class="anime-content">
             <div class="anime-title">Lookism</div>
             <div class="seasons">
-                <div class="season-btn" onclick="toggle(this)">Season 1</div>
+                <div class="season-btn" data-url="https://example.com/lookism-s1">Season 1</div>
             </div>
         </div>
     </div>
@@ -134,7 +135,7 @@ body {
         <div class="anime-content">
             <div class="anime-title">Let This Grieving Soul Retire</div>
             <div class="seasons">
-                <div class="season-btn" onclick="toggle(this)">Season 1</div>
+                <div class="season-btn" data-url="https://example.com/grieving-s1">Season 1</div>
             </div>
         </div>
     </div>
@@ -142,9 +143,31 @@ body {
 </div>
 
 <script>
-function toggle(el) {
-    el.classList.toggle("active");
-}
+/* handle season button click */
+document.querySelectorAll(".season-btn").forEach(btn => {
+    btn.addEventListener("click", e => {
+        e.stopPropagation();
+
+        // remove active from all buttons
+        document.querySelectorAll(".season-btn")
+            .forEach(b => b.classList.remove("active"));
+
+        // activate clicked button
+        btn.classList.add("active");
+
+        // open URL
+        const url = btn.dataset.url;
+        if (url) {
+            window.open(url, "_blank");
+        }
+    });
+});
+
+/* tap anywhere else -> reset buttons */
+document.addEventListener("click", () => {
+    document.querySelectorAll(".season-btn")
+        .forEach(b => b.classList.remove("active"));
+});
 </script>
 
 </body>
