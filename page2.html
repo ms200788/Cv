@@ -6,13 +6,16 @@
 <title>CVAnime</title>
 
 <style>
-/* ===== BASE ===== */
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont;
     background: #000;
-    color: #ffffff;
-    transition: background 0.4s ease;
+    color: #fff;
+    overflow-x: hidden;
 }
 
 /* ===== TOP BAR ===== */
@@ -31,12 +34,11 @@ body {
     align-items: center;
 }
 
-/* toggle button */
 .toggle {
     background: rgba(255,255,255,0.15);
-    border: 1px solid rgba(255,255,255,0.3);
+    border: 1px solid rgba(255,255,255,0.35);
     color: #fff;
-    padding: 6px 12px;
+    padding: 6px 14px;
     border-radius: 20px;
     font-size: 13px;
 }
@@ -44,31 +46,21 @@ body {
 /* ===== CARD ===== */
 .card {
     max-width: 680px;
-    margin: 26px auto;
-    padding: 24px;
+    margin: 22px auto;
+    padding: 22px;
     border-radius: 18px;
     background-image: url("https://i.ibb.co/4nxVTXW5/IMG-20251222-205203.jpg");
     background-size: cover;
     background-position: center;
     position: relative;
     overflow: hidden;
-    animation: breathe 8s ease-in-out infinite;
 }
 
-/* living effect */
-@keyframes breathe {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.015); }
-    100% { transform: scale(1); }
-}
-
-/* overlay */
 .card::before {
     content: "";
     position: absolute;
     inset: 0;
     background: rgba(0,0,0,0.55);
-    z-index: 0;
 }
 
 .card * {
@@ -76,77 +68,62 @@ body {
     z-index: 2;
 }
 
-h1 { margin-bottom: 6px; }
-h2 { font-size: 17px; opacity: 0.9; }
-
-/* ===== BUTTON ===== */
-.btn {
-    margin-top: 16px;
-    padding: 14px;
-    width: 100%;
-    border-radius: 30px;
-    border: 1px solid rgba(255,255,255,0.35);
-    background: rgba(255,255,255,0.08);
-    color: #fff;
-    font-size: 16px;
-    backdrop-filter: blur(8px);
-    text-decoration: none;
-    display: block;
-    text-align: center;
-}
-
-/* ===== ALPHABET GRID ===== */
 .alpha {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 12px;
-    margin-top: 20px;
+    margin-top: 16px;
 }
 
 .alpha a {
-    text-align: center;
     padding: 14px;
+    text-align: center;
     border-radius: 10px;
     background: rgba(255,255,255,0.08);
-    backdrop-filter: blur(6px);
-    font-weight: 700;
     color: #fff;
     text-decoration: none;
+    font-weight: 700;
 }
 
 .alpha .wide {
     grid-column: span 2;
 }
 
-/* ===== ELECTRIC SPARK ===== */
+/* ===== SPARK PNG ANIMATION ===== */
 .spark {
     position: fixed;
+    width: 140px;
+    height: 140px;
     pointer-events: none;
-    width: 40px;
-    height: 40px;
-    background: transparent;
+    z-index: 9999;
+
+    transform: translate(-50%, -50%) scale(0.2) rotate(0deg);
+    opacity: 0;
+
+    animation: sparkSpinGrow 700ms ease-out forwards;
+    filter: drop-shadow(0 0 10px rgba(255,255,255,0.9));
 }
 
-.spark::before {
-    content: "";
-    position: absolute;
-    width: 2px;
-    height: 40px;
-    background: #000;
-    box-shadow:
-        4px -6px #000,
-        -4px 8px #000,
-        6px 14px #000;
-    animation: zap 300ms ease-out forwards;
-}
+@keyframes sparkSpinGrow {
+    0% {
+        transform: translate(-50%, -50%) scale(0.2) rotate(0deg);
+        opacity: 0;
+        filter: blur(5px) brightness(2);
+    }
 
-@keyframes zap {
-    from {
-        transform: scale(0.6) rotate(0deg);
+    20% {
         opacity: 1;
     }
-    to {
-        transform: scale(1.8) rotate(40deg);
+
+    60% {
+        transform: translate(-50%, -50%) scale(1) rotate(180deg);
+        filter: blur(1px) brightness(1.4);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(1.6) rotate(360deg);
+        filter: blur(3px) brightness(1);
         opacity: 0;
     }
 }
@@ -155,50 +132,48 @@ h2 { font-size: 17px; opacity: 0.9; }
 
 <body>
 
-<!-- TOPBAR -->
 <div class="topbar">
     <span>𝘾𝙑𝘼𝙣𝙞𝙢𝙚</span>
     <button class="toggle" onclick="toggleBg()">BG</button>
 </div>
 
-<!-- CARD -->
 <div class="card">
     <h1>Welcome to CVAnime</h1>
-    <h2>Tap alphabet to explore anime</h2>
+    <p>Tap any letter</p>
 
     <div class="alpha">
-        <a href="/a">A</a><a href="/b">B</a><a href="/c">C</a><a href="/d">D</a>
-        <a href="/e">E</a><a href="/f">F</a><a href="/g">G</a><a href="/h">H</a>
-        <a href="/i">I</a><a href="/j">J</a><a href="/k">K</a><a href="/l">L</a>
-        <a href="/m">M</a><a href="/n">N</a><a href="/o">O</a><a href="/p">P</a>
-        <a href="/q">Q</a><a href="/r">R</a><a href="/s">S</a><a href="/t">T</a>
-        <a href="/u">U</a><a href="/v">V</a><a href="/w">W</a><a href="/x">X</a>
-        <a class="wide" href="/y">Y</a>
-        <a class="wide" href="/z">Z</a>
+        <a>A</a><a>B</a><a>C</a><a>D</a>
+        <a>E</a><a>F</a><a>G</a><a>H</a>
+        <a>I</a><a>J</a><a>K</a><a>L</a>
+        <a>M</a><a>N</a><a>O</a><a>P</a>
+        <a>Q</a><a>R</a><a>S</a><a>T</a>
+        <a>U</a><a>V</a><a>W</a><a>X</a>
+        <a class="wide">Y</a>
+        <a class="wide">Z</a>
     </div>
-
-    <a href="https://t.me/yourchannel" class="btn">Join Telegram</a>
 </div>
 
-<!-- EXTRA BUTTON -->
-<a href="/more" class="btn" style="max-width:680px;margin:20px auto;">More Anime</a>
-
 <script>
-/* background toggle */
 let dark = true;
 function toggleBg() {
-    document.body.style.background = dark ? "#0b1518" : "#000";
+    document.body.style.background = dark ? "#0b1d22" : "#000";
     dark = !dark;
 }
 
-/* electric spark everywhere */
+/* Spark click animation */
 document.addEventListener("click", (e) => {
-    const s = document.createElement("span");
-    s.className = "spark";
-    s.style.left = e.clientX + "px";
-    s.style.top = e.clientY + "px";
-    document.body.appendChild(s);
-    setTimeout(() => s.remove(), 300);
+    const spark = document.createElement("img");
+    spark.className = "spark";
+
+    // 🔥 Your spark PNG
+    spark.src = "https://i.ibb.co/pjvsrLcL/IMG-20260203-132505.png";
+
+    spark.style.left = e.clientX + "px";
+    spark.style.top = e.clientY + "px";
+
+    document.body.appendChild(spark);
+
+    setTimeout(() => spark.remove(), 750);
 });
 </script>
 
