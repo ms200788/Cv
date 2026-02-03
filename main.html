@@ -1,188 +1,227 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CVAnime</title>
 
 <style>
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            line-height: 1.8;
-            margin: 0;
-            background-color: #0f2027;
-            color: #eaeaea;
-        }
+/* ===== BASE ===== */
+* {
+    box-sizing: border-box;
+}
 
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #000;
+    color: #ffffff;
+    transition: background 0.35s ease;
+    overflow-x: hidden;
+}
+
+/* ===== TOP BAR ===== */
 .topbar {
     position: sticky;
     top: 0;
     z-index: 1000;
-
     background-image: url("https://i.ibb.co/4nxVTXW5/IMG-20251222-205203.jpg");
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
-
-    color: #ffffff;
     padding: 14px 16px;
     font-size: 20px;
     font-weight: 700;
-
-    backdrop-filter: blur(2px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.satire {
-    background: #000;
+/* Toggle button */
+.toggle {
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.35);
     color: #fff;
-    text-align: center;
-    padding: 8px;
+    padding: 6px 14px;
+    border-radius: 20px;
     font-size: 13px;
-    font-weight: 600;
+    backdrop-filter: blur(6px);
 }
 
-.article {
-    max-width: 860px;
-    margin: 16px auto;
-    background: #fff;
-    border-radius: 16px;
-    padding: 20px;
+/* ===== CARD ===== */
+.card {
+    max-width: 680px;
+    margin: 22px auto;
+    padding: 22px;
+    border-radius: 18px;
+    background-image: url("https://i.ibb.co/4nxVTXW5/IMG-20251222-205203.jpg");
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+    animation: breathe 8s ease-in-out infinite;
+}
+
+/* subtle life animation */
+@keyframes breathe {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.015); }
+    100% { transform: scale(1); }
+}
+
+/* dark overlay */
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    z-index: 0;
+}
+
+.card * {
+    position: relative;
+    z-index: 2;
 }
 
 h1 {
-    font-size: 28px;
-    margin-bottom: 10px;
+    margin: 0 0 6px;
 }
 
-.meta {
-    color: #666;
-    font-size: 13px;
+h2 {
+    font-size: 16px;
+    opacity: 0.9;
     margin-bottom: 16px;
 }
-.disclaimer {
-    background: #111;
+
+/* ===== BUTTON ===== */
+.btn {
+    margin-top: 16px;
+    padding: 14px;
+    width: 100%;
+    border-radius: 30px;
+    border: 1px solid rgba(255,255,255,0.35);
+    background: rgba(255,255,255,0.08);
     color: #fff;
-    padding: 16px;
-    font-size: 13px;
-    border-radius: 14px;
-    margin-top: 30px;
+    font-size: 16px;
+    backdrop-filter: blur(8px);
+    text-decoration: none;
+    display: block;
+    text-align: center;
 }
 
-ul {
-    padding-left: 18px;
+/* ===== ALPHABET GRID ===== */
+.alpha {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-top: 10px;
 }
 
-ul li {
-    font-size: 15px;
-    line-height: 1.8;
-    margin: 10px 0;
+.alpha a {
+    text-align: center;
+    padding: 14px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(6px);
+    font-weight: 700;
+    color: #fff;
+    text-decoration: none;
 }
 
-        .section {
-            background: #ffffff;
-            padding: 25px;
-            margin-bottom: 30px;
-            border-left: 6px solid #4da3ff;
-        }
-       .card {
-         background:#ffffff;
-         color:#000000;
-    border-radius:16px;
-    padding:20px;
-    margin:16px;
-}
-p {
-    line-height:1.8;
-    margin:14px 0;
-    font-size:15px;
+.alpha .wide {
+    grid-column: span 2;
 }
 
-.ad {
-    margin:24px 0;
-    text-align:center;
+/* ===== EXTRA BUTTON BELOW CARD ===== */
+.extra-btn {
+    max-width: 680px;
+    margin: 20px auto;
 }
-.conclusion {
-    background:#f0f3ff;
-    padding:20px;
-    border-left:5px solid #4a63ff;
-    border-radius:12px;
-}
-.bg {
+
+/* ===== REAL ELECTRIC SPARK (PNG) ===== */
+.spark {
     position: fixed;
-    inset: 0;
-    overflow: hidden;
-    z-index: -1;
+    width: 130px;
+    height: 130px;
+    pointer-events: none;
+    transform: translate(-50%, -50%) scale(0.25);
+    opacity: 1;
+    animation: sparkBlast 420ms ease-out forwards;
+    z-index: 9999;
 }
 
-.bg span {
-    position: absolute;
-    width: 12px;
-    height: 12px;
-    background: rgba(120, 200, 255, 0.18); /* light blue */
-    border-radius: 50%;
-    animation: float 16s linear infinite;
-}
-
-@keyframes float {
-    from { transform: translateY(100vh); }
-    to { transform: translateY(-10vh); }
+@keyframes sparkBlast {
+    0% {
+        transform: translate(-50%, -50%) scale(0.25);
+        opacity: 1;
+    }
+    60% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.9;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1.4);
+        opacity: 0;
+    }
 }
 </style>
-
-
 </head>
 
 <body>
-<div class="bg">
-    <span style="left:5%; animation-delay:0s;"></span>
-    <span style="left:12%; animation-delay:3s;"></span>
-    <span style="left:20%; animation-delay:6s;"></span>
-    <span style="left:30%; animation-delay:1s;"></span>
-    <span style="left:40%; animation-delay:4s;"></span>
-    <span style="left:50%; animation-delay:7s;"></span>
-    <span style="left:60%; animation-delay:2s;"></span>
-    <span style="left:70%; animation-delay:5s;"></span>
-    <span style="left:80%; animation-delay:8s;"></span>
-    <span style="left:90%; animation-delay:6s;"></span>
-</div>
-<div class="topbar"><b>𝙲𝚅𝙰𝚗𝚒𝚖𝚎</b></div>
-<div class="satire">⚠️ ᴍᴜsᴛ ʜᴀᴠᴇ ᴛᴇʟᴇɢʀᴍ</div>
 
+<!-- TOP BAR -->
+<div class="topbar">
+    <span>𝘾𝙑𝘼𝙣𝙞𝙢𝙚</span>
+    <button class="toggle" onclick="toggleBg()">BG</button>
+</div>
+
+<!-- CARD -->
 <div class="card">
+    <h1>Welcome to CVAnime</h1>
+    <h2>Tap alphabet to explore anime</h2>
 
-<h1>𝘞𝘦𝘭𝘤𝘰𝘮𝘦 𝘛𝘰 <b>𝙲𝚅𝙰𝚗𝚒𝚖𝚎</𝚋></h1>
-<h2>Click on Alphabet to Choose Anime.</h2>
+    <div class="alpha">
+        <a href="/a">A</a><a href="/b">B</a><a href="/c">C</a><a href="/d">D</a>
+        <a href="/e">E</a><a href="/f">F</a><a href="/g">G</a><a href="/h">H</a>
+        <a href="/i">I</a><a href="/j">J</a><a href="/k">K</a><a href="/l">L</a>
+        <a href="/m">M</a><a href="/n">N</a><a href="/o">O</a><a href="/p">P</a>
+        <a href="/q">Q</a><a href="/r">R</a><a href="/s">S</a><a href="/t">T</a>
+        <a href="/u">U</a><a href="/v">V</a><a href="/w">W</a><a href="/x">X</a>
+        <a class="wide" href="/y">Y</a>
+        <a class="wide" href="/z">Z</a>
+    </div>
 
-<div class="disclaimer">𝗔𝗹𝗹 𝗔𝗻𝗶𝗺𝗲 𝗛𝗲𝗿𝗲 𝗮𝗿𝗲 𝗶𝗻 𝗛𝗶𝗻𝗱𝗶 𝗟𝗮𝗻𝗴𝘂𝗮𝗴𝗲 𝗼𝗻𝗹𝘆. </div>
-
-<ul>
-    <li><b><tt>a</tt></b></li>
-<li><b><tt>b</tt></b></li>
-<li><b><tt>c</tt></b></li>
-<li><b><tt>d</tt></b></li>
-<li><b><tt>e</tt></b></li>
-<li><b><tt>f</tt></b></li>
-<li><b><tt>g</tt></b></li>
-<li><b><tt>h</tt></b></li>
-<li><b><tt>i</tt></b></li>
-<li><b><tt>j</tt></b></li>
-<li><b><tt>k</tt></b></li>
-<li><b><tt>l</tt></b></li>
-<li><b><tt>m</tt></b></li>
-<li><b><tt>n</tt></b></li>
-<li><b><tt>o</tt></b></li>
-<li><b><tt>p</tt></b></li>
-<li><b><tt>q</tt></b></li>
-<li><b><tt>r</tt></b></li>
-<li><b><tt>s</tt></b></li>
-<li><b><tt>t</tt></b></li>
-<li><b><tt>u</tt></b></li>
-<li><b><tt>v</tt></b></li>
-<li><b><tt>w</tt></b></li>
-<li><b><tt>x</tt></b></li>
-<li><b><tt>y</tt></b></li>
-<li><b><tt>z</tt></b></li>
-</ul>
-
+    <a href="https://t.me/yourchannel" class="btn">Join Telegram</a>
 </div>
+
+<!-- EXTRA BUTTON -->
+<div class="extra-btn">
+    <a href="/more" class="btn">More Anime</a>
+</div>
+
+<script>
+/* background toggle */
+let dark = true;
+function toggleBg() {
+    document.body.style.background = dark ? "#0b1518" : "#000";
+    dark = !dark;
+}
+
+/* REAL ELECTRIC SPARK EVERYWHERE */
+document.addEventListener("click", (e) => {
+    const spark = document.createElement("img");
+    spark.className = "spark";
+
+    /* 🔥 YOUR IMGBB SPARK PNG */
+    spark.src = "https://i.ibb.co/XXXXXXX/spark.png";
+
+    spark.style.left = e.clientX + "px";
+    spark.style.top = e.clientY + "px";
+
+    document.body.appendChild(spark);
+
+    setTimeout(() => spark.remove(), 450);
+});
+</script>
+
 </body>
 </html>
