@@ -10,8 +10,8 @@
 body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
-    background: #0f2027;
-    color: #eaeaea;
+    background: #0b1518;
+    color: #ffffff;
 }
 
 /* ===== TOP BAR ===== */
@@ -19,54 +19,64 @@ body {
     position: sticky;
     top: 0;
     z-index: 1000;
-    background-image: url("https://i.ibb.co/4nxVTXW5/IMG-20251222-205203.jpg");
-    background-size: cover;
-    background-position: center;
-    color: #fff;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(6px);
     padding: 14px 16px;
     font-size: 20px;
     font-weight: 700;
-    backdrop-filter: blur(3px);
-}
-
-/* ===== NOTICE ===== */
-.satire {
-    background: #000;
-    color: #fff;
-    text-align: center;
-    padding: 8px;
-    font-size: 13px;
-    font-weight: 600;
 }
 
 /* ===== CARD ===== */
 .card {
-    max-width: 680px; /* patla */
-    margin: 24px auto;
-    background: #ffffff;
-    color: #000;
+    max-width: 680px;
+    margin: 26px auto;
+    padding: 24px;
     border-radius: 18px;
-    padding: 22px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    background-image: url("https://i.ibb.co/4nxVTXW5/IMG-20251222-205203.jpg");
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+
+    animation: breathe 8s ease-in-out infinite;
 }
 
-h1 {
-    font-size: 26px;
-    margin-bottom: 8px;
+/* Subtle life animation */
+@keyframes breathe {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.015); }
+    100% { transform: scale(1); }
 }
 
-h2 {
-    font-size: 18px;
-    margin-bottom: 14px;
+/* Dark overlay */
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    z-index: 0;
 }
 
-.disclaimer {
-    background: #111;
-    color: #fff;
+/* Content above overlay */
+.card * {
+    position: relative;
+    z-index: 2;
+}
+
+h1 { margin-bottom: 6px; }
+h2 { font-size: 17px; opacity: 0.9; }
+
+/* ===== TRANSPARENT BUTTON ===== */
+.btn {
+    margin-top: 16px;
     padding: 14px;
-    font-size: 13px;
-    border-radius: 12px;
-    margin: 16px 0;
+    width: 100%;
+    border-radius: 30px;
+    border: 1px solid rgba(255,255,255,0.35);
+    background: rgba(255,255,255,0.08);
+    color: #fff;
+    font-size: 16px;
+    backdrop-filter: blur(8px);
 }
 
 /* ===== ALPHABET GRID ===== */
@@ -78,48 +88,37 @@ h2 {
 }
 
 .alpha div {
-    background: #f0f3ff;
     text-align: center;
     padding: 14px;
-    font-size: 18px;
-    font-weight: 700;
     border-radius: 10px;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(6px);
+    font-weight: 700;
 }
 
-/* BIG Y Z */
-.alpha .big {
+.alpha .wide {
     grid-column: span 2;
-    font-size: 28px;
-    padding: 20px;
-    background: #4da3ff;
-    color: #fff;
 }
 
-/* ===== ANIMATED BACKGROUND ===== */
-.bg {
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-    overflow: hidden;
-}
-
-.particle {
+/* ===== TAP SPARK ===== */
+.spark {
     position: absolute;
-    bottom: -20px;
+    width: 8px;
+    height: 8px;
+    background: black;
     border-radius: 50%;
-    background: rgba(120,220,255,0.6);
-    box-shadow: 0 0 18px rgba(120,220,255,0.8);
-    animation: floatUp linear infinite;
+    pointer-events: none;
+    animation: spark 600ms ease-out forwards;
 }
 
-@keyframes floatUp {
+@keyframes spark {
     from {
-        transform: translateY(0);
-        opacity: 0;
+        transform: scale(0.5);
+        opacity: 0.8;
     }
     to {
-        transform: translateY(-120vh);
-        opacity: 1;
+        transform: scale(8);
+        opacity: 0;
     }
 }
 </style>
@@ -127,21 +126,11 @@ h2 {
 
 <body>
 
-<!-- ===== ANIMATED BG ===== -->
-<div class="bg" id="bg"></div>
-
-<!-- ===== HEADER ===== -->
 <div class="topbar">𝘾𝙑𝘼𝙣𝙞𝙢𝙚</div>
-<div class="satire">⚠️ ᴍᴜsᴛ ʜᴀᴠᴇ ᴛᴇʟᴇɢʀᴀᴍ</div>
 
-<!-- ===== CONTENT ===== -->
-<div class="card">
-    <h1>Welcome to <b>CVAnime</b></h1>
-    <h2>Click on Alphabet to Choose Anime</h2>
-
-    <div class="disclaimer">
-        All Anime here are available in Hindi language only.
-    </div>
+<div class="card" id="card">
+    <h1>Welcome to CVAnime</h1>
+    <h2>Tap alphabet to explore anime</h2>
 
     <div class="alpha">
         <div>A</div><div>B</div><div>C</div><div>D</div>
@@ -150,26 +139,28 @@ h2 {
         <div>M</div><div>N</div><div>O</div><div>P</div>
         <div>Q</div><div>R</div><div>S</div><div>T</div>
         <div>U</div><div>V</div><div>W</div><div>X</div>
-        <div class="big">Y</div>
-        <div class="big">Z</div>
+        <div class="wide">Y</div>
+        <div class="wide">Z</div>
     </div>
+
+    <button class="btn">Join Telegram</button>
 </div>
 
-<!-- ===== BG SCRIPT (GUARANTEED ANIMATION) ===== -->
 <script>
-const bg = document.getElementById("bg");
+const card = document.getElementById("card");
 
-for (let i = 0; i < 40; i++) {
-    const p = document.createElement("div");
-    p.className = "particle";
-    const size = 6 + Math.random() * 14;
-    p.style.width = size + "px";
-    p.style.height = size + "px";
-    p.style.left = Math.random() * 100 + "vw";
-    p.style.animationDuration = (8 + Math.random() * 14) + "s";
-    p.style.animationDelay = Math.random() * 6 + "s";
-    bg.appendChild(p);
-}
+card.addEventListener("click", (e) => {
+    const spark = document.createElement("span");
+    spark.className = "spark";
+
+    const rect = card.getBoundingClientRect();
+    spark.style.left = (e.clientX - rect.left) + "px";
+    spark.style.top = (e.clientY - rect.top) + "px";
+
+    card.appendChild(spark);
+
+    setTimeout(() => spark.remove(), 600);
+});
 </script>
 
 </body>
