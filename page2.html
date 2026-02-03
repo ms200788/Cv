@@ -10,8 +10,9 @@
 body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
-    background: #0b1518;
+    background: #000;
     color: #ffffff;
+    transition: background 0.4s ease;
 }
 
 /* ===== TOP BAR ===== */
@@ -19,11 +20,25 @@ body {
     position: sticky;
     top: 0;
     z-index: 1000;
-    background: rgba(0,0,0,0.6);
-    backdrop-filter: blur(6px);
+    background-image: url("https://i.ibb.co/4nxVTXW5/IMG-20251222-205203.jpg");
+    background-size: cover;
+    background-position: center;
     padding: 14px 16px;
     font-size: 20px;
     font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* toggle button */
+.toggle {
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
 }
 
 /* ===== CARD ===== */
@@ -37,18 +52,17 @@ body {
     background-position: center;
     position: relative;
     overflow: hidden;
-
     animation: breathe 8s ease-in-out infinite;
 }
 
-/* Subtle life animation */
+/* living effect */
 @keyframes breathe {
     0% { transform: scale(1); }
     50% { transform: scale(1.015); }
     100% { transform: scale(1); }
 }
 
-/* Dark overlay */
+/* overlay */
 .card::before {
     content: "";
     position: absolute;
@@ -57,7 +71,6 @@ body {
     z-index: 0;
 }
 
-/* Content above overlay */
 .card * {
     position: relative;
     z-index: 2;
@@ -66,7 +79,7 @@ body {
 h1 { margin-bottom: 6px; }
 h2 { font-size: 17px; opacity: 0.9; }
 
-/* ===== TRANSPARENT BUTTON ===== */
+/* ===== BUTTON ===== */
 .btn {
     margin-top: 16px;
     padding: 14px;
@@ -77,6 +90,9 @@ h2 { font-size: 17px; opacity: 0.9; }
     color: #fff;
     font-size: 16px;
     backdrop-filter: blur(8px);
+    text-decoration: none;
+    display: block;
+    text-align: center;
 }
 
 /* ===== ALPHABET GRID ===== */
@@ -87,37 +103,50 @@ h2 { font-size: 17px; opacity: 0.9; }
     margin-top: 20px;
 }
 
-.alpha div {
+.alpha a {
     text-align: center;
     padding: 14px;
     border-radius: 10px;
     background: rgba(255,255,255,0.08);
     backdrop-filter: blur(6px);
     font-weight: 700;
+    color: #fff;
+    text-decoration: none;
 }
 
 .alpha .wide {
     grid-column: span 2;
 }
 
-/* ===== TAP SPARK ===== */
+/* ===== ELECTRIC SPARK ===== */
 .spark {
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    background: black;
-    border-radius: 50%;
+    position: fixed;
     pointer-events: none;
-    animation: spark 600ms ease-out forwards;
+    width: 40px;
+    height: 40px;
+    background: transparent;
 }
 
-@keyframes spark {
+.spark::before {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 40px;
+    background: #000;
+    box-shadow:
+        4px -6px #000,
+        -4px 8px #000,
+        6px 14px #000;
+    animation: zap 300ms ease-out forwards;
+}
+
+@keyframes zap {
     from {
-        transform: scale(0.5);
-        opacity: 0.8;
+        transform: scale(0.6) rotate(0deg);
+        opacity: 1;
     }
     to {
-        transform: scale(8);
+        transform: scale(1.8) rotate(40deg);
         opacity: 0;
     }
 }
@@ -126,40 +155,50 @@ h2 { font-size: 17px; opacity: 0.9; }
 
 <body>
 
-<div class="topbar">𝘾𝙑𝘼𝙣𝙞𝙢𝙚</div>
+<!-- TOPBAR -->
+<div class="topbar">
+    <span>𝘾𝙑𝘼𝙣𝙞𝙢𝙚</span>
+    <button class="toggle" onclick="toggleBg()">BG</button>
+</div>
 
-<div class="card" id="card">
+<!-- CARD -->
+<div class="card">
     <h1>Welcome to CVAnime</h1>
     <h2>Tap alphabet to explore anime</h2>
 
     <div class="alpha">
-        <div>A</div><div>B</div><div>C</div><div>D</div>
-        <div>E</div><div>F</div><div>G</div><div>H</div>
-        <div>I</div><div>J</div><div>K</div><div>L</div>
-        <div>M</div><div>N</div><div>O</div><div>P</div>
-        <div>Q</div><div>R</div><div>S</div><div>T</div>
-        <div>U</div><div>V</div><div>W</div><div>X</div>
-        <div class="wide">Y</div>
-        <div class="wide">Z</div>
+        <a href="/a">A</a><a href="/b">B</a><a href="/c">C</a><a href="/d">D</a>
+        <a href="/e">E</a><a href="/f">F</a><a href="/g">G</a><a href="/h">H</a>
+        <a href="/i">I</a><a href="/j">J</a><a href="/k">K</a><a href="/l">L</a>
+        <a href="/m">M</a><a href="/n">N</a><a href="/o">O</a><a href="/p">P</a>
+        <a href="/q">Q</a><a href="/r">R</a><a href="/s">S</a><a href="/t">T</a>
+        <a href="/u">U</a><a href="/v">V</a><a href="/w">W</a><a href="/x">X</a>
+        <a class="wide" href="/y">Y</a>
+        <a class="wide" href="/z">Z</a>
     </div>
 
-    <button class="btn">Join Telegram</button>
+    <a href="https://t.me/yourchannel" class="btn">Join Telegram</a>
 </div>
 
+<!-- EXTRA BUTTON -->
+<a href="/more" class="btn" style="max-width:680px;margin:20px auto;">More Anime</a>
+
 <script>
-const card = document.getElementById("card");
+/* background toggle */
+let dark = true;
+function toggleBg() {
+    document.body.style.background = dark ? "#0b1518" : "#000";
+    dark = !dark;
+}
 
-card.addEventListener("click", (e) => {
-    const spark = document.createElement("span");
-    spark.className = "spark";
-
-    const rect = card.getBoundingClientRect();
-    spark.style.left = (e.clientX - rect.left) + "px";
-    spark.style.top = (e.clientY - rect.top) + "px";
-
-    card.appendChild(spark);
-
-    setTimeout(() => spark.remove(), 600);
+/* electric spark everywhere */
+document.addEventListener("click", (e) => {
+    const s = document.createElement("span");
+    s.className = "spark";
+    s.style.left = e.clientX + "px";
+    s.style.top = e.clientY + "px";
+    document.body.appendChild(s);
+    setTimeout(() => s.remove(), 300);
 });
 </script>
 
