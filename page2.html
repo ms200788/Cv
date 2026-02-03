@@ -6,15 +6,18 @@
 <title>CVAnime</title>
 
 <style>
+/* ===== RESET ===== */
 * {
     box-sizing: border-box;
 }
 
+/* ===== BASE ===== */
 body {
     margin: 0;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont;
+    font-family: Arial, Helvetica, sans-serif;
     background: #000;
-    color: #fff;
+    color: #ffffff;
+    transition: background 0.35s ease;
     overflow-x: hidden;
 }
 
@@ -34,6 +37,7 @@ body {
     align-items: center;
 }
 
+/* Toggle button */
 .toggle {
     background: rgba(255,255,255,0.15);
     border: 1px solid rgba(255,255,255,0.35);
@@ -41,6 +45,7 @@ body {
     padding: 6px 14px;
     border-radius: 20px;
     font-size: 13px;
+    backdrop-filter: blur(6px);
 }
 
 /* ===== CARD ===== */
@@ -56,11 +61,13 @@ body {
     overflow: hidden;
 }
 
+/* dark overlay */
 .card::before {
     content: "";
     position: absolute;
     inset: 0;
     background: rgba(0,0,0,0.55);
+    z-index: 0;
 }
 
 .card * {
@@ -68,47 +75,81 @@ body {
     z-index: 2;
 }
 
+h1 {
+    margin: 0 0 6px;
+}
+
+h2 {
+    font-size: 16px;
+    opacity: 0.9;
+    margin-bottom: 16px;
+}
+
+/* ===== BUTTON ===== */
+.btn {
+    margin-top: 16px;
+    padding: 14px;
+    width: 100%;
+    border-radius: 30px;
+    border: 1px solid rgba(255,255,255,0.35);
+    background: rgba(255,255,255,0.08);
+    color: #fff;
+    font-size: 16px;
+    backdrop-filter: blur(8px);
+    text-decoration: none;
+    display: block;
+    text-align: center;
+}
+
+/* ===== ALPHABET GRID ===== */
 .alpha {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 12px;
-    margin-top: 16px;
+    margin-top: 10px;
 }
 
 .alpha a {
-    padding: 14px;
     text-align: center;
+    padding: 14px;
     border-radius: 10px;
     background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(6px);
+    font-weight: 700;
     color: #fff;
     text-decoration: none;
-    font-weight: 700;
 }
 
 .alpha .wide {
     grid-column: span 2;
 }
 
-/* ===== SPARK PNG ANIMATION ===== */
+/* ===== EXTRA BUTTON ===== */
+.extra-btn {
+    max-width: 680px;
+    margin: 20px auto;
+}
+
+/* ===== SPARK (SPIN + GROW + VANISH) ===== */
 .spark {
     position: fixed;
-    width: 140px;
-    height: 140px;
+    width: 160px;
+    height: 160px;
     pointer-events: none;
     z-index: 9999;
 
-    transform: translate(-50%, -50%) scale(0.2) rotate(0deg);
     opacity: 0;
+    transform: translate(-50%, -50%) scale(0.2) rotate(0deg);
 
-    animation: sparkSpinGrow 700ms ease-out forwards;
+    animation: sparkSpinGrow 750ms linear forwards;
     filter: drop-shadow(0 0 10px rgba(255,255,255,0.9));
 }
 
 @keyframes sparkSpinGrow {
     0% {
-        transform: translate(-50%, -50%) scale(0.2) rotate(0deg);
         opacity: 0;
-        filter: blur(5px) brightness(2);
+        transform: translate(-50%, -50%) scale(0.2) rotate(0deg);
+        filter: blur(6px) brightness(2);
     }
 
     20% {
@@ -116,15 +157,15 @@ body {
     }
 
     60% {
-        transform: translate(-50%, -50%) scale(1) rotate(180deg);
-        filter: blur(1px) brightness(1.4);
         opacity: 1;
+        transform: translate(-50%, -50%) scale(1) rotate(240deg);
+        filter: blur(1px) brightness(1.4);
     }
 
     100% {
-        transform: translate(-50%, -50%) scale(1.6) rotate(360deg);
-        filter: blur(3px) brightness(1);
         opacity: 0;
+        transform: translate(-50%, -50%) scale(1.5) rotate(360deg);
+        filter: blur(3px) brightness(1);
     }
 }
 </style>
@@ -132,48 +173,55 @@ body {
 
 <body>
 
+<!-- TOP BAR -->
 <div class="topbar">
     <span>𝘾𝙑𝘼𝙣𝙞𝙢𝙚</span>
     <button class="toggle" onclick="toggleBg()">BG</button>
 </div>
 
+<!-- CARD -->
 <div class="card">
     <h1>Welcome to CVAnime</h1>
-    <p>Tap any letter</p>
+    <h2>Tap alphabet to explore anime</h2>
 
     <div class="alpha">
-        <a>A</a><a>B</a><a>C</a><a>D</a>
-        <a>E</a><a>F</a><a>G</a><a>H</a>
-        <a>I</a><a>J</a><a>K</a><a>L</a>
-        <a>M</a><a>N</a><a>O</a><a>P</a>
-        <a>Q</a><a>R</a><a>S</a><a>T</a>
-        <a>U</a><a>V</a><a>W</a><a>X</a>
-        <a class="wide">Y</a>
-        <a class="wide">Z</a>
+        <a href="/a">A</a><a href="/b">B</a><a href="/c">C</a><a href="/d">D</a>
+        <a href="/e">E</a><a href="/f">F</a><a href="/g">G</a><a href="/h">H</a>
+        <a href="/i">I</a><a href="/j">J</a><a href="/k">K</a><a href="/l">L</a>
+        <a href="/m">M</a><a href="/n">N</a><a href="/o">O</a><a href="/p">P</a>
+        <a href="/q">Q</a><a href="/r">R</a><a href="/s">S</a><a href="/t">T</a>
+        <a href="/u">U</a><a href="/v">V</a><a href="/w">W</a><a href="/x">X</a>
+        <a class="wide" href="/y">Y</a>
+        <a class="wide" href="/z">Z</a>
     </div>
+
+    <a href="https://t.me/yourchannel" class="btn">Join Telegram</a>
+</div>
+
+<!-- EXTRA BUTTON -->
+<div class="extra-btn">
+    <a href="/more" class="btn">More Anime</a>
 </div>
 
 <script>
+/* Background toggle */
 let dark = true;
 function toggleBg() {
-    document.body.style.background = dark ? "#0b1d22" : "#000";
+    document.body.style.background = dark ? "#0b1518" : "#000";
     dark = !dark;
 }
 
-/* Spark click animation */
+/* SPARK ON TAP */
 document.addEventListener("click", (e) => {
     const spark = document.createElement("img");
     spark.className = "spark";
-
-    // 🔥 Your spark PNG
     spark.src = "https://i.ibb.co/pjvsrLcL/IMG-20260203-132505.png";
 
     spark.style.left = e.clientX + "px";
     spark.style.top = e.clientY + "px";
 
     document.body.appendChild(spark);
-
-    setTimeout(() => spark.remove(), 750);
+    setTimeout(() => spark.remove(), 800);
 });
 </script>
 
