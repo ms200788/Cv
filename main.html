@@ -17,7 +17,7 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     background: #000;
     color: #ffffff;
-    transition: background 0.35s ease;
+    transition: background 0.35s ease, color 0.35s ease;
     overflow-x: hidden;
 }
 
@@ -130,42 +130,32 @@ h2 {
     margin: 20px auto;
 }
 
-/* ===== REAL ELECTRIC SPARK (CENTER → EDGE) ===== */
+/* ===== SPARK ===== */
 .spark {
     position: fixed;
     width: 160px;
     height: 160px;
     pointer-events: none;
     z-index: 9999;
-
-    transform: translate(-50%, -50%) scale(0.15);
     opacity: 0;
-
-    animation: sparkTravel 650ms ease-out forwards;
-    filter: drop-shadow(0 0 8px rgba(255,255,255,0.9));
+    transform: translate(-50%, -50%) scale(0.2) rotate(0deg);
+    animation: sparkSpinGrow 750ms linear forwards;
+    filter: drop-shadow(0 0 10px rgba(255,255,255,0.9));
 }
 
-@keyframes sparkTravel {
+@keyframes sparkSpinGrow {
     0% {
-        transform: translate(-50%, -50%) scale(0.15);
         opacity: 0;
+        transform: translate(-50%, -50%) scale(0.2) rotate(0deg);
         filter: blur(6px) brightness(2);
     }
-
-    20% {
-        opacity: 1;
+    20% { opacity: 1; }
+    60% {
+        transform: translate(-50%, -50%) scale(1) rotate(240deg);
     }
-
-    55% {
-        transform: translate(-50%, -50%) scale(1);
-        filter: blur(1px) brightness(1.4);
-        opacity: 1;
-    }
-
     100% {
-        transform: translate(-50%, -50%) scale(1.35);
-        filter: blur(3px) brightness(1);
         opacity: 0;
+        transform: translate(-50%, -50%) scale(1.5) rotate(360deg);
     }
 }
 </style>
@@ -173,13 +163,11 @@ h2 {
 
 <body>
 
-<!-- TOP BAR -->
 <div class="topbar">
     <span>𝘾𝙑𝘼𝙣𝙞𝙢𝙚</span>
     <button class="toggle" onclick="toggleBg()">BG</button>
 </div>
 
-<!-- CARD -->
 <div class="card">
     <h1>Welcome to CVAnime</h1>
     <h2>Tap alphabet to explore anime</h2>
@@ -195,39 +183,38 @@ h2 {
         <a class="wide" href="/z">Z</a>
     </div>
 
-    <a href="https://t.me/yourchannel" class="btn">Join Telegram</a>
+    <a href="/ongoing" class="btn">𝙾𝚗𝚐𝚘𝚒𝚗𝚐 𝙰𝚗𝚒𝚖𝚎</a>
 </div>
 
-<!-- EXTRA BUTTON -->
 <div class="extra-btn">
-    <a href="/more" class="btn">More Anime</a>
+    <a href="https://t.me/CV_Anime" class="btn">𝗝𝗼𝗶𝗻 𝗧𝗲𝗹𝗲𝗴𝗿𝗮𝗺</a>
 </div>
 
 <script>
-/* Background toggle */
-let dark = true;
+/* Background toggle: black ⇄ white */
+let bgState = 0;
+
 function toggleBg() {
-    document.body.style.background = dark ? "#0b1518" : "#000";
-    dark = !dark;
+    if (bgState === 0) {
+        document.body.style.background = "#ffffff";
+        document.body.style.color = "#000000";
+        bgState = 1;
+    } else {
+        document.body.style.background = "#000000";
+        document.body.style.color = "#ffffff";
+        bgState = 0;
+    }
 }
 
-/* ELECTRIC SPARK — CENTER BURST */
+/* SPARK ON TAP */
 document.addEventListener("click", (e) => {
     const spark = document.createElement("img");
     spark.className = "spark";
-
-    /* ⚡ Your lightning PNG */
-    spark.src = "https://i.ibb.co/pjvsrLcL/IMG-20260203-132505.png";
-
+    spark.src = "https://i.ibb.co/0Rc4LQxq/swirl-icon-design-element-png.png";
     spark.style.left = e.clientX + "px";
     spark.style.top = e.clientY + "px";
-
-    /* slight random rotation for realism */
-    spark.style.transform += ` rotate(${Math.random() * 360}deg)`;
-
     document.body.appendChild(spark);
-
-    setTimeout(() => spark.remove(), 700);
+    setTimeout(() => spark.remove(), 800);
 });
 </script>
 
