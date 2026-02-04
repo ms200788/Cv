@@ -7,9 +7,7 @@
 
 <style>
 /* ===== RESET ===== */
-* {
-    box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 /* ===== BASE ===== */
 body {
@@ -17,7 +15,7 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     background: #000;
     color: #ffffff;
-    transition: background 0.35s ease, color 0.35s ease;
+    transition: background 0.35s ease;
     overflow-x: hidden;
 }
 
@@ -61,7 +59,6 @@ body {
     overflow: hidden;
 }
 
-/* dark overlay */
 .card::before {
     content: "";
     position: absolute;
@@ -73,16 +70,6 @@ body {
 .card * {
     position: relative;
     z-index: 2;
-}
-
-h1 {
-    margin: 0 0 6px;
-}
-
-h2 {
-    font-size: 16px;
-    opacity: 0.9;
-    margin-bottom: 16px;
 }
 
 /* ===== BUTTON ===== */
@@ -106,11 +93,9 @@ h2 {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 12px;
-    margin-top: 10px;
 }
 
 .alpha a {
-    text-align: center;
     padding: 14px;
     border-radius: 10px;
     background: rgba(255,255,255,0.08);
@@ -118,6 +103,7 @@ h2 {
     font-weight: 700;
     color: #fff;
     text-decoration: none;
+    text-align: center;
 }
 
 .alpha .wide {
@@ -130,6 +116,13 @@ h2 {
     margin: 20px auto;
 }
 
+/* 🔥 ONLY Telegram button changes on white BG */
+body.white-bg .extra-btn .btn {
+    background: #000 !important;
+    color: #fff !important;
+    border-color: rgba(255,255,255,0.4);
+}
+
 /* ===== SPARK ===== */
 .spark {
     position: fixed;
@@ -138,25 +131,14 @@ h2 {
     pointer-events: none;
     z-index: 9999;
     opacity: 0;
-    transform: translate(-50%, -50%) scale(0.2) rotate(0deg);
+    transform: translate(-50%, -50%) scale(0.2);
     animation: sparkSpinGrow 750ms linear forwards;
-    filter: drop-shadow(0 0 10px rgba(255,255,255,0.9));
 }
 
 @keyframes sparkSpinGrow {
-    0% {
-        opacity: 0;
-        transform: translate(-50%, -50%) scale(0.2) rotate(0deg);
-        filter: blur(6px) brightness(2);
-    }
-    20% { opacity: 1; }
-    60% {
-        transform: translate(-50%, -50%) scale(1) rotate(240deg);
-    }
-    100% {
-        opacity: 0;
-        transform: translate(-50%, -50%) scale(1.5) rotate(360deg);
-    }
+    0% { opacity: 0; transform: translate(-50%, -50%) scale(0.2); }
+    40% { opacity: 1; }
+    100% { opacity: 0; transform: translate(-50%, -50%) scale(1.5); }
 }
 </style>
 </head>
@@ -191,30 +173,30 @@ h2 {
 </div>
 
 <script>
-/* Background toggle: black ⇄ white */
+/* BG toggle: black ⇄ white */
 let bgState = 0;
 
 function toggleBg() {
     if (bgState === 0) {
         document.body.style.background = "#ffffff";
-        document.body.style.color = "#000000";
+        document.body.classList.add("white-bg");
         bgState = 1;
     } else {
         document.body.style.background = "#000000";
-        document.body.style.color = "#ffffff";
+        document.body.classList.remove("white-bg");
         bgState = 0;
     }
 }
 
-/* SPARK ON TAP */
-document.addEventListener("click", (e) => {
-    const spark = document.createElement("img");
-    spark.className = "spark";
-    spark.src = "https://i.ibb.co/0Rc4LQxq/swirl-icon-design-element-png.png";
-    spark.style.left = e.clientX + "px";
-    spark.style.top = e.clientY + "px";
-    document.body.appendChild(spark);
-    setTimeout(() => spark.remove(), 800);
+/* Spark effect */
+document.addEventListener("click", e => {
+    const s = document.createElement("img");
+    s.className = "spark";
+    s.src = "https://i.ibb.co/0Rc4LQxq/swirl-icon-design-element-png.png";
+    s.style.left = e.clientX + "px";
+    s.style.top = e.clientY + "px";
+    document.body.appendChild(s);
+    setTimeout(() => s.remove(), 800);
 });
 </script>
 
