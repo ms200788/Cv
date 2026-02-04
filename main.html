@@ -75,8 +75,7 @@ body {
 /* ===== BUTTON ===== */
 .btn {
     margin-top: 16px;
-    padding: 14px;
-    width: 100%;
+    padding: 14px 22px;
     border-radius: 30px;
     border: 1px solid rgba(255,255,255,0.35);
     background: rgba(255,255,255,0.08);
@@ -114,13 +113,20 @@ body {
 .extra-btn {
     max-width: 680px;
     margin: 20px auto;
+    text-align: center;
 }
 
-/* 🔥 ONLY Telegram button changes on white BG */
+/* Telegram button = word width only */
+.extra-btn .btn {
+    display: inline-block;
+    width: auto;
+}
+
+/* Telegram button on WHITE BG */
 body.white-bg .extra-btn .btn {
-    background: #000 !important;
-    color: #fff !important;
-    border-color: rgba(255,255,255,0.4);
+    background: transparent !important;
+    color: #000 !important;
+    border: 1px solid #000 !important;
 }
 
 /* ===== SPARK ===== */
@@ -131,14 +137,22 @@ body.white-bg .extra-btn .btn {
     pointer-events: none;
     z-index: 9999;
     opacity: 0;
-    transform: translate(-50%, -50%) scale(0.2);
+    transform: translate(-50%, -50%) scale(0.2) rotate(0deg);
     animation: sparkSpinGrow 750ms linear forwards;
 }
 
 @keyframes sparkSpinGrow {
-    0% { opacity: 0; transform: translate(-50%, -50%) scale(0.2); }
-    40% { opacity: 1; }
-    100% { opacity: 0; transform: translate(-50%, -50%) scale(1.5); }
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.2) rotate(0deg);
+    }
+    40% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(1.5) rotate(360deg);
+    }
 }
 </style>
 </head>
@@ -170,6 +184,9 @@ body.white-bg .extra-btn .btn {
 
 <div class="extra-btn">
     <a href="https://t.me/CV_Anime" class="btn">𝗝𝗼𝗶𝗻 𝗧𝗲𝗹𝗲𝗴𝗿𝗮𝗺</a>
+    <p style="margin-top:8px; font-size:13px; opacity:0.8;">
+        For more updates
+    </p>
 </div>
 
 <script>
