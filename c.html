@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>C-Animes</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #0f2027;
+    color: #fff;
+}
+
+/* ===== TOPBAR ===== */
+.topbar {
+    background: #121212;
+    padding: 14px 16px;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+/* ===== CONTAINER ===== */
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 16px;
+}
+
+/* ===== ANIME CARD ===== */
+.anime-card {
+    position: relative;
+    height: 220px;
+    border-radius: 18px;
+    overflow: hidden;
+    margin-bottom: 22px;
+    background-size: cover;
+    background-position: center;
+}
+
+.anime-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to top,
+        rgba(0,0,0,0.75),
+        rgba(0,0,0,0.2)
+    );
+}
+
+.anime-content {
+    position: absolute;
+    bottom: 18px;
+    left: 18px;
+    right: 18px;
+    z-index: 2;
+}
+
+.anime-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+/* ===== SEASON BUTTONS ===== */
+.seasons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.season-btn {
+    padding: 8px 16px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.5);
+    background: rgba(255,255,255,0.12);
+    color: #d0d0d0;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.25s ease;
+    user-select: none;
+}
+
+.season-btn.active {
+    border: 1.5px solid #ffffff;
+    background: rgba(0,0,0,0.35);
+    color: #ffffff;
+}
+</style>
+</head>
+
+<body>
+
+<div class="topbar">C-Animes</div>
+
+<div class="container">
+
+<!-- Campfire Cooking in Another World -->
+<div class="anime-card" style="background-image:url('https://i.ibb.co/9qz8c1Q/campfire.jpg');">
+    <div class="anime-content">
+        <div class="anime-title">Campfire Cooking in Another World with My Absurd Skill</div>
+        <div class="seasons">
+            <div class="season-btn" data-url="#">Season 1</div>
+        </div>
+    </div>
+</div>
+
+<!-- Captain Laserhawk -->
+<div class="anime-card" style="background-image:url('https://i.ibb.co/ZB2M8J9/laserhawk.jpg');">
+    <div class="anime-content">
+        <div class="anime-title">Captain Laserhawk</div>
+        <div class="seasons">
+            <div class="season-btn" data-url="#">Season 1</div>
+        </div>
+    </div>
+</div>
+
+<!-- Castlevania Nocturne -->
+<div class="anime-card" style="background-image:url('https://i.ibb.co/V3B4R9m/castlevania.jpg');">
+    <div class="anime-content">
+        <div class="anime-title">Castlevania: Nocturne</div>
+        <div class="seasons">
+            <div class="season-btn" data-url="#">Season 1</div>
+        </div>
+    </div>
+</div>
+
+<!-- Code Geass -->
+<div class="anime-card" style="background-image:url('https://i.ibb.co/fv3S3vw/codegeass.jpg');">
+    <div class="anime-content">
+        <div class="anime-title">Code Geass</div>
+        <div class="seasons">
+            <div class="season-btn" data-url="#">Season 1</div>
+            <div class="season-btn" data-url="#">Season 2</div>
+        </div>
+    </div>
+</div>
+
+<!-- Classroom of the Elite -->
+<div class="anime-card" style="background-image:url('https://i.ibb.co/7CqNwKp/classroom.jpg');">
+    <div class="anime-content">
+        <div class="anime-title">Classroom of the Elite</div>
+        <div class="seasons">
+            <div class="season-btn" data-url="#">Season 1</div>
+            <div class="season-btn" data-url="#">Season 2</div>
+            <div class="season-btn" data-url="#">Season 3</div>
+        </div>
+    </div>
+</div>
+
+<!-- Catch Me at the Ballpark -->
+<div class="anime-card" style="background-image:url('https://i.ibb.co/4T8gZ6F/ballpark.jpg');">
+    <div class="anime-content">
+        <div class="anime-title">Catch Me at the Ballpark!</div>
+        <div class="seasons">
+            <div class="season-btn" data-url="#">Season 1</div>
+        </div>
+    </div>
+</div>
+
+<!-- Clevatess -->
+<div class="anime-card" style="background-image:url('https://i.ibb.co/YpR6c5m/clevatess.jpg');">
+    <div class="anime-content">
+        <div class="anime-title">Clevatess</div>
+        <div class="seasons">
+            <div class="season-btn" data-url="#">Season 1</div>
+        </div>
+    </div>
+</div>
+
+<!-- Chainsaw Man -->
+<div class="anime-card" style="background-image:url('https://i.ibb.co/Xj5ZKzM/chainsaw.jpg');">
+    <div class="anime-content">
+        <div class="anime-title">Chainsaw Man</div>
+        <div class="seasons">
+            <div class="season-btn" data-url="#">Season 1</div>
+            <div class="season-btn" data-url="#">Movie</div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+<script>
+document.querySelectorAll(".season-btn").forEach(btn => {
+    btn.addEventListener("click", e => {
+        e.stopPropagation();
+
+        document.querySelectorAll(".season-btn")
+            .forEach(b => b.classList.remove("active"));
+
+        btn.classList.add("active");
+
+        const url = btn.dataset.url;
+        if (url && url !== "#") {
+            window.open(url, "_blank");
+        }
+    });
+});
+
+document.addEventListener("click", () => {
+    document.querySelectorAll(".season-btn")
+        .forEach(b => b.classList.remove("active"));
+});
+</script>
+
+</body>
+</html>
