@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>A-Animes</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #0f2027;
+    color: #fff;
+}
+
+/* ===== TOPBAR ===== */
+.topbar {
+    background: #121212;
+    padding: 14px 16px;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+/* ===== CONTAINER ===== */
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 16px;
+}
+
+/* ===== ANIME CARD ===== */
+.anime-card {
+    position: relative;
+    height: 220px;
+    border-radius: 18px;
+    overflow: hidden;
+    margin-bottom: 22px;
+    background-size: cover;
+    background-position: center;
+}
+
+.anime-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.75), rgba(0,0,0,0.2));
+}
+
+.anime-content {
+    position: absolute;
+    bottom: 18px;
+    left: 18px;
+    right: 18px;
+    z-index: 2;
+}
+
+.anime-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+/* ===== SEASON BUTTONS ===== */
+.seasons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.season-btn {
+    padding: 8px 16px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.5);
+    background: rgba(255,255,255,0.12);
+    color: #d0d0d0;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.season-btn.active {
+    border: 1.5px solid #ffffff;
+    background: rgba(0,0,0,0.35);
+    color: #ffffff;
+}
+</style>
+</head>
+
+<body>
+
+<div class="topbar">A-Animes</div>
+
+<div class="container">
+
+<!-- A Couple of Cuckoos -->
+<div class="anime-card" style="background-image:url('https://i.ibb.co/2kH5qJ0/a1.jpg');">
+    <div class="anime-content">
+        <div class="anime-title">A Couple of Cuckoos</div>
+        <div class="seasons">
+            <div class="season-btn" data-url="#">Season 1</div>
+        </div>
+    </div>
+</div>
+
+<!-- A Condition Called Love -->
+<div class="anime-card" style="background-image:url('https://i.ibb.co/2kH5qJ0/a2.jpg');">
+    <div class="anime-content">
+        <div class="anime-title">A Condition Called Love</div>
+        <div class="seasons">
+            <div class="season-btn" data-url="#">Season 1</div>
+        </div>
+    </div>
+</div>
+
+<!-- A Salad Bowl of Eccentrics -->
+<div class="anime-card" style="background-image:url('https://i.ibb.co/2kH5qJ0/a3.jpg');">
+    <div class="anime-content">
+        <div class="anime-title">A Salad Bowl of Eccentrics</div>
+        <div class="seasons">
+            <div class="season-btn" data-url="#">Season 1</div>
+        </div>
+    </div>
+</div>
+
+<!-- Akebi's Sailor Uniform -->
+<div class="anime-card" style="background-image:url('https://i.ibb.co/2kH5qJ0/a4.jpg');">
+    <div class="anime-content">
+        <div class="anime-title">Akebi's Sailor Uniform</div>
+        <div class="seasons">
+            <div class="season-btn" data-url="#">Season 1</div>
+        </div>
+    </div>
+</div>
+
+<!-- Akudama Drive -->
+<div class="anime-card" style="background-image:url('https://i.ibb.co/2kH5qJ0/a5.jpg');">
+    <div class="anime-content">
+        <div class="anime-title">Akudama Drive</div>
+        <div class="seasons">
+            <div class="season-btn" data-url="#">Season 1</div>
+        </div>
+    </div>
+</div>
+
+<!-- Akuma Kun -->
+<div class="anime-card" style="background-image:url('https://i.ibb.co/2kH5qJ0/a6.jpg');">
+    <div class="anime-content">
+        <div class="anime-title">Akuma Kun</div>
+        <div class="seasons">
+            <div class="season-btn" data-url="#">Season 1</div>
+        </div>
+    </div>
+</div>
+
+<!-- Alya Sometimes Hides Her Feelings in Russian -->
+<div class="anime-card" style="background-image:url('https://i.ibb.co/2kH5qJ0/a7.jpg');">
+    <div class="anime-content">
+        <div class="anime-title">Alya Sometimes Hides Her Feelings in Russian</div>
+        <div class="seasons">
+            <div class="season-btn" data-url="#">Season 1</div>
+        </div>
+    </div>
+</div>
+
+<!-- An Archdemon's Dilemma -->
+<div class="anime-card" style="background-image:url('https://i.ibb.co/2kH5qJ0/a8.jpg');">
+    <div class="anime-content">
+        <div class="anime-title">An Archdemon's Dilemma: How to Love Your Elf Bride</div>
+        <div class="seasons">
+            <div class="season-btn" data-url="#">Season 1</div>
+        </div>
+    </div>
+</div>
+
+<!-- Assassination Classroom -->
+<div class="anime-card" style="background-image:url('https://i.ibb.co/2kH5qJ0/a9.jpg');">
+    <div class="anime-content">
+        <div class="anime-title">Assassination Classroom</div>
+        <div class="seasons">
+            <div class="season-btn" data-url="#">Season 1</div>
+            <div class="season-btn" data-url="#">Season 2</div>
+        </div>
+    </div>
+</div>
+
+<!-- Attack on Titan -->
+<div class="anime-card" style="background-image:url('https://i.ibb.co/2kH5qJ0/a10.jpg');">
+    <div class="anime-content">
+        <div class="anime-title">Attack on Titan</div>
+        <div class="seasons">
+            <div class="season-btn" data-url="#">Season 1</div>
+            <div class="season-btn" data-url="#">Season 2</div>
+            <div class="season-btn" data-url="#">Season 3</div>
+            <div class="season-btn" data-url="#">Final Season</div>
+        </div>
+    </div>
+</div>
+
+<!-- Adam's Sweet Agony -->
+<div class="anime-card" style="background-image:url('https://i.ibb.co/2kH5qJ0/a11.jpg');">
+    <div class="anime-content">
+        <div class="anime-title">Adam's Sweet Agony</div>
+        <div class="seasons">
+            <div class="season-btn" data-url="#">Season 1</div>
+        </div>
+    </div>
+</div>
+
+<!-- Avatar -->
+<div class="anime-card" style="background-image:url('https://i.ibb.co/2kH5qJ0/a12.jpg');">
+    <div class="anime-content">
+        <div class="anime-title">Avatar: The Last Airbender</div>
+        <div class="seasons">
+            <div class="season-btn" data-url="#">Book 1</div>
+            <div class="season-btn" data-url="#">Book 2</div>
+            <div class="season-btn" data-url="#">Book 3</div>
+        </div>
+    </div>
+</div>
+
+<!-- Ameku M.D. -->
+<div class="anime-card" style="background-image:url('https://i.ibb.co/2kH5qJ0/a13.jpg');">
+    <div class="anime-content">
+        <div class="anime-title">Ameku M.D. Doctor Detective</div>
+        <div class="seasons">
+            <div class="season-btn" data-url="#">Season 1</div>
+        </div>
+    </div>
+</div>
+
+<!-- Reincarnated Aristocrat -->
+<div class="anime-card" style="background-image:url('https://i.ibb.co/2kH5qJ0/a14.jpg');">
+    <div class="anime-content">
+        <div class="anime-title">As a Reincarnated Aristocrat, I Will Use My Appraisal Skill</div>
+        <div class="seasons">
+            <div class="season-btn" data-url="#">Season 1</div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+<script>
+document.querySelectorAll(".season-btn").forEach(btn => {
+    btn.addEventListener("click", e => {
+        e.stopPropagation();
+        document.querySelectorAll(".season-btn")
+            .forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+
+        const url = btn.dataset.url;
+        if (url && url !== "#") {
+            window.open(url, "_blank");
+        }
+    });
+});
+
+document.addEventListener("click", () => {
+    document.querySelectorAll(".season-btn")
+        .forEach(b => b.classList.remove("active"));
+});
+</script>
+
+</body>
+</html>
