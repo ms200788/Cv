@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>T-Animes</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #0f2027;
+    color: #fff;
+}
+
+/* TOPBAR */
+.topbar {
+    background: #121212;
+    padding: 14px 16px;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+/* CONTAINER */
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 16px;
+}
+
+/* ANIME CARD */
+.anime-card {
+    position: relative;
+    height: 220px;
+    border-radius: 18px;
+    overflow: hidden;
+    margin-bottom: 22px;
+    background-size: cover;
+    background-position: center;
+}
+
+/* overlay */
+.anime-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.75), rgba(0,0,0,0.2));
+}
+
+/* content */
+.anime-content {
+    position: absolute;
+    bottom: 18px;
+    left: 18px;
+    right: 18px;
+    z-index: 2;
+}
+
+/* title */
+.anime-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+/* seasons */
+.seasons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.season-btn {
+    padding: 8px 16px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.5);
+    background: rgba(255,255,255,0.12);
+    color: #d0d0d0;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.season-btn.active {
+    border: 1.5px solid #fff;
+    background: rgba(0,0,0,0.35);
+    color: #fff;
+}
+</style>
+</head>
+
+<body>
+
+<div class="topbar">T-Animes</div>
+
+<div class="container">
+
+<!-- IMAGE PLACEHOLDER -->
+<!-- https://i.ibb.co/2kR9Z3g/anime-placeholder.jpg -->
+
+<div class="anime-card" style="background-image:url('https://i.ibb.co/2kR9Z3g/anime-placeholder.jpg');"><div class="anime-content"><div class="anime-title">That Time I Got Reincarnated as a Slime</div><div class="seasons"><div class="season-btn" data-url="#">Season 1</div></div></div></div>
+
+<div class="anime-card" style="background-image:url('https://i.ibb.co/2kR9Z3g/anime-placeholder.jpg');"><div class="anime-content"><div class="anime-title">The Angel Next Door Spoils Me Rotten</div><div class="seasons"><div class="season-btn" data-url="#">Season 1</div></div></div></div>
+
+<div class="anime-card" style="background-image:url('https://i.ibb.co/2kR9Z3g/anime-placeholder.jpg');"><div class="anime-content"><div class="anime-title">The Ancient Magus' Bride</div><div class="seasons"><div class="season-btn" data-url="#">Season 1</div></div></div></div>
+
+<div class="anime-card" style="background-image:url('https://i.ibb.co/2kR9Z3g/anime-placeholder.jpg');"><div class="anime-content"><div class="anime-title">The Apothecary Diaries</div><div class="seasons"><div class="season-btn" data-url="#">Season 1</div></div></div></div>
+
+<div class="anime-card"><div class="anime-content"><div class="anime-title">The Case Study of Vanitas</div><div class="seasons"><div class="season-btn" data-url="#">Season 1</div></div></div></div>
+
+<div class="anime-card"><div class="anime-content"><div class="anime-title">The Daily Life of the Immortal King</div><div class="seasons"><div class="season-btn" data-url="#">Season 1</div></div></div></div>
+
+<div class="anime-card"><div class="anime-content"><div class="anime-title">The Detective Is Already Dead</div><div class="seasons"><div class="season-btn" data-url="#">Season 1</div></div></div></div>
+
+<div class="anime-card"><div class="anime-content"><div class="anime-title">The Many Sides of Voice Actor Radio</div><div class="seasons"><div class="season-btn" data-url="#">Season 1</div></div></div></div>
+
+<div class="anime-card"><div class="anime-content"><div class="anime-title">The Elusive Samurai</div><div class="seasons"><div class="season-btn" data-url="#">Season 1</div></div></div></div>
+
+<div class="anime-card"><div class="anime-content"><div class="anime-title">The Great Cleric</div><div class="seasons"><div class="season-btn" data-url="#">Season 1</div></div></div></div>
+
+<div class="anime-card"><div class="anime-content"><div class="anime-title">The Grimm Variation</div><div class="seasons"><div class="season-btn" data-url="#">Season 1</div></div></div></div>
+
+<div class="anime-card"><div class="anime-content"><div class="anime-title">The Iceblade Sorcerer Shall Rule the World</div><div class="seasons"><div class="season-btn" data-url="#">Season 1</div></div></div></div>
+
+<div class="anime-card"><div class="anime-content"><div class="anime-title">The Legend of Korra</div><div class="seasons"><div class="season-btn" data-url="#">Book 1</div></div></div></div>
+
+<div class="anime-card"><div class="anime-content"><div class="anime-title">The Legend of Vox Machina</div><div class="seasons"><div class="season-btn" data-url="#">Season 1</div></div></div></div>
+
+<div class="anime-card"><div class="anime-content"><div class="anime-title">The Maid I Hired Recently Is Mysterious</div><div class="seasons"><div class="season-btn" data-url="#">Season 1</div></div></div></div>
+
+<div class="anime-card"><div class="anime-content"><div class="anime-title">The Strongest Magician in Demon Lord's Army Was a Human</div><div class="seasons"><div class="season-btn" data-url="#">Season 1</div></div></div></div>
+
+<div class="anime-card"><div class="anime-content"><div class="anime-title">The Reincarnation of the Strongest Exorcist in Another World</div><div class="seasons"><div class="season-btn" data-url="#">Season 1</div></div></div></div>
+
+<div class="anime-card"><div class="anime-content"><div class="anime-title">The Weakest Tamer Began a Journey to Pick Up Trash</div><div class="seasons"><div class="season-btn" data-url="#">Season 1</div></div></div></div>
+
+<div class="anime-card"><div class="anime-content"><div class="anime-title">The World's Finest Assassin Gets Reincarnated in Another World as an Aristocrat</div><div class="seasons"><div class="season-btn" data-url="#">Season 1</div></div></div></div>
+
+<div class="anime-card"><div class="anime-content"><div class="anime-title">The Wrong Way to Use Healing Magic</div><div class="seasons"><div class="season-btn" data-url="#">Season 1</div></div></div></div>
+
+<div class="anime-card"><div class="anime-content"><div class="anime-title">Tokyo 24th Ward</div><div class="seasons"><div class="season-btn" data-url="#">Season 1</div></div></div></div>
+
+<div class="anime-card"><div class="anime-content"><div class="anime-title">Tokyo Revengers</div><div class="seasons"><div class="season-btn" data-url="#">Season 1</div></div></div></div>
+
+<div class="anime-card"><div class="anime-content"><div class="anime-title">Tomo-chan Is a Girl!</div><div class="seasons"><div class="season-btn" data-url="#">Season 1</div></div></div></div>
+
+<div class="anime-card"><div class="anime-content"><div class="anime-title">Tower of God</div><div class="seasons"><div class="season-btn" data-url="#">Season 1</div></div></div></div>
+
+<div class="anime-card"><div class="anime-content"><div class="anime-title">Trapped in a Dating Sim: The World of Otome Games Is Tough for Mobs</div><div class="seasons"><div class="season-btn" data-url="#">Season 1</div></div></div></div>
+
+<div class="anime-card"><div class="anime-content"><div class="anime-title">Trillion Game</div><div class="seasons"><div class="season-btn" data-url="#">Season 1</div></div></div></div>
+
+<div class="anime-card"><div class="anime-content"><div class="anime-title">True Beauty</div><div class="seasons"><div class="season-btn" data-url="#">Season 1</div></div></div></div>
+
+<div class="anime-card"><div class="anime-content"><div class="anime-title">Tsukimichi: Moonlit Fantasy</div><div class="seasons"><div class="season-btn" data-url="#">Season 1</div></div></div></div>
+
+<div class="anime-card"><div class="anime-content"><div class="anime-title">Twilight Out of Focus</div><div class="seasons"><div class="season-btn" data-url="#">Season 1</div></div></div></div>
+
+<div class="anime-card"><div class="anime-content"><div class="anime-title">Tying the Knot with an Amagami Sister</div><div class="seasons"><div class="season-btn" data-url="#">Season 1</div></div></div></div>
+
+<div class="anime-card"><div class="anime-content"><div class="anime-title">The God of High School</div><div class="seasons"><div class="season-btn" data-url="#">Season 1</div></div></div></div>
+
+<div class="anime-card"><div class="anime-content"><div class="anime-title">The Unaware Atelier Meister</div><div class="seasons"><div class="season-btn" data-url="#">Season 1</div></div></div></div>
+
+<div class="anime-card"><div class="anime-content"><div class="anime-title">The Shiunji Family Children</div><div class="seasons"><div class="season-btn" data-url="#">Season 1</div></div></div></div>
+
+<div class="anime-card"><div class="anime-content"><div class="anime-title">The Gorilla God's Go-To Girl</div><div class="seasons"><div class="season-btn" data-url="#">Season 1</div></div></div></div>
+
+<div class="anime-card"><div class="anime-content"><div class="anime-title">Twilight of the God</div><div class="seasons"><div class="season-btn" data-url="#">Season 1</div></div></div></div>
+
+<div class="anime-card"><div class="anime-content"><div class="anime-title">Teogonia</div><div class="seasons"><div class="season-btn" data-url="#">Season 1</div></div></div></div>
+
+<div class="anime-card"><div class="anime-content"><div class="anime-title">The Magical Girl and the Evil Lieutenant Used to Be Archenemies</div><div class="seasons"><div class="season-btn" data-url="#">Season 1</div></div></div></div>
+
+<div class="anime-card"><div class="anime-content"><div class="anime-title">The Red Ranger Becomes an Adventurer in Another World</div><div class="seasons"><div class="season-btn" data-url="#">Season 1</div></div></div></div>
+
+<div class="anime-card"><div class="anime-content"><div class="anime-title">Toilet-bound Hanako-kun</div><div class="seasons"><div class="season-btn" data-url="#">Season 1</div></div></div></div>
+
+</div>
+
+<script>
+document.querySelectorAll(".season-btn").forEach(btn => {
+    btn.addEventListener("click", e => {
+        e.stopPropagation();
+        document.querySelectorAll(".season-btn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+
+        const url = btn.dataset.url;
+        if (url && url !== "#") {
+            window.open(url, "_blank");
+        }
+    });
+});
+
+document.addEventListener("click", () => {
+    document.querySelectorAll(".season-btn").forEach(b => b.classList.remove("active"));
+});
+</script>
+
+</body>
+</html>
