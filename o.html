@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>O-Animes</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #0f2027;
+    color: #fff;
+}
+
+/* ===== TOPBAR ===== */
+.topbar {
+    background: #121212;
+    padding: 14px 16px;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+/* ===== CONTAINER ===== */
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 16px;
+}
+
+/* ===== ANIME CARD ===== */
+.anime-card {
+    position: relative;
+    height: 220px;
+    border-radius: 18px;
+    overflow: hidden;
+    margin-bottom: 22px;
+    background-size: cover;
+    background-position: center;
+}
+
+/* dark overlay */
+.anime-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to top,
+        rgba(0,0,0,0.75),
+        rgba(0,0,0,0.2)
+    );
+}
+
+/* content */
+.anime-content {
+    position: absolute;
+    bottom: 18px;
+    left: 18px;
+    right: 18px;
+    z-index: 2;
+}
+
+/* title */
+.anime-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+/* ===== SEASON BUTTONS ===== */
+.seasons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.season-btn {
+    padding: 8px 16px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.5);
+    background: rgba(255,255,255,0.12);
+    color: #d0d0d0;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.25s ease;
+    user-select: none;
+}
+
+.season-btn.active {
+    border: 1.5px solid #ffffff;
+    background: rgba(0,0,0,0.35);
+    color: #ffffff;
+}
+</style>
+</head>
+
+<body>
+
+<div class="topbar">O-Animes</div>
+
+<div class="container">
+
+<!-- Onimusha -->
+<div class="anime-card" style="background-image:url('https://i.ibb.co/xs3Hk8p/onimusha.jpg');">
+    <div class="anime-content">
+        <div class="anime-title">Onimusha</div>
+        <div class="seasons">
+            <div class="season-btn">Season 1</div>
+        </div>
+    </div>
+</div>
+
+<!-- One Piece -->
+<div class="anime-card" style="background-image:url('https://i.ibb.co/8j7rZ1C/one-piece.jpg');">
+    <div class="anime-content">
+        <div class="anime-title">One Piece</div>
+        <div class="seasons">
+            <div class="season-btn">Arc 1</div>
+            <div class="season-btn">More</div>
+        </div>
+    </div>
+</div>
+
+<!-- One Punch Man -->
+<div class="anime-card" style="background-image:url('https://i.ibb.co/qgQHk9H/one-punch-man.jpg');">
+    <div class="anime-content">
+        <div class="anime-title">One Punch Man</div>
+        <div class="seasons">
+            <div class="season-btn">Season 1</div>
+            <div class="season-btn">Season 2</div>
+        </div>
+    </div>
+</div>
+
+<!-- Overlord -->
+<div class="anime-card" style="background-image:url('https://i.ibb.co/5nF3KZJ/overlord.jpg');">
+    <div class="anime-content">
+        <div class="anime-title">Overlord</div>
+        <div class="seasons">
+            <div class="season-btn">Season 1</div>
+            <div class="season-btn">Season 2</div>
+            <div class="season-btn">Season 3</div>
+            <div class="season-btn">Season 4</div>
+        </div>
+    </div>
+</div>
+
+<!-- Once Upon a Witch's Death -->
+<div class="anime-card" style="background-image:url('https://i.ibb.co/7V3cZB8/once-upon-a-witchs-death.jpg');">
+    <div class="anime-content">
+        <div class="anime-title">Once Upon a Witch's Death</div>
+        <div class="seasons">
+            <div class="season-btn">Season 1</div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+<script>
+document.querySelectorAll(".season-btn").forEach(btn => {
+    btn.addEventListener("click", e => {
+        e.stopPropagation();
+        document.querySelectorAll(".season-btn")
+            .forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+    });
+});
+
+document.addEventListener("click", () => {
+    document.querySelectorAll(".season-btn")
+        .forEach(b => b.classList.remove("active"));
+});
+</script>
+
+</body>
+</html>
