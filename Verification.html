@@ -169,25 +169,29 @@ function verifyDOB() {
         if(step < messages.length){
             status.innerHTML = messages[step];
         }
-    }, 2000); // change message every 2 sec (5 steps = 10 sec)
+    }, 2000);
 
     setTimeout(function(){
         clearInterval(interval);
         loader.style.display="none";
-        btn.disabled = false;
 
         const age = calculateAge(dob);
 
         if(age >= 18){
             status.style.color="green";
             status.innerHTML="Verification successful. Access approved.";
+
+            // Remove verify button completely
+            btn.style.display = "none";
+
             continueBox.style.display="block";
         } else {
             status.style.color="red";
             status.innerHTML="Access denied. You must be 18 years or older.";
+            btn.disabled = false;
         }
 
-    }, 10000); // 10 seconds total
+    }, 10000);
 }
 </script>
 </head>
@@ -216,7 +220,7 @@ This platform contains age-restricted material. Verification is required to comp
 </div>
 
 <div id="continueBox">
-<a href=https://t.me/+8iXOKzWhigZhNzg">
+<a href="https://t.me/+8iXOKzWhigZhNzg">
 <button>Enter</button>
 </a>
 </div>
