@@ -134,7 +134,8 @@ function calculateAge(dob) {
 }
 
 function verifyDOB() {
-    const dob = document.getElementById("dob").value;
+    const dobInput = document.getElementById("dob");
+    const dob = dobInput.value;
     const status = document.getElementById("status");
     const loader = document.getElementById("loader");
     const continueBox = document.getElementById("continueBox");
@@ -177,18 +178,28 @@ function verifyDOB() {
 
         const age = calculateAge(dob);
 
+        // Disable DOB selector permanently after verification attempt
+        dobInput.disabled = true;
+
         if(age >= 18){
             status.style.color="green";
             status.innerHTML="Verification successful. Access approved.";
 
-            // Remove verify button completely
+            // Remove verify button
             btn.style.display = "none";
 
             continueBox.style.display="block";
         } else {
             status.style.color="red";
-            status.innerHTML="Access denied. You must be 18 years or older.";
-            btn.disabled = false;
+            status.innerHTML="Access denied. You must be 18 years or older. Redirecting...";
+
+            // Remove verify button
+            btn.style.display = "none";
+
+            // Auto exit after 5 seconds
+            setTimeout(function(){
+                window.location.href = "about:blank";
+            }, 5000);
         }
 
     }, 10000);
@@ -220,7 +231,7 @@ This platform contains age-restricted material. Verification is required to comp
 </div>
 
 <div id="continueBox">
-<a href="https://t.me/+8iXOKzWhigZhNzg">
+<a href="https://t.me/+8iXOKzWhigZhNzg1">
 <button>Enter</button>
 </a>
 </div>
